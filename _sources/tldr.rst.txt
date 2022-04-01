@@ -1,0 +1,10 @@
+TLDR
+====
+
+- Don't use ``os.path``, use ``pathlib.Path`` instead, see :doc:`paths <libraries>`
+- Don't use ``print``, use ``loguru.logger``, see :doc:`loguru <libraries>`
+- Use ``pydantic`` for dataclasses and settings management, see :doc:`pydantic <classes>`
+- Use :doc:`typehinting`, and install ``black``, ``flake8``, ``isort``, ``mypy``, ``pep8-naming``, ``flake8-annotations`` to format/lint your code with ``make``, see :doc:`linting`
+- Create your own types with either ``Protocol`` (see :doc:`typehinting`) or ``pydantic`` (see :doc:`classes`) if things get too complex
+- Manage your environment with ``poetry`` instead of ``conda``, see :doc:`poetry`
+- Use the data science cookiecutter as a starting point for project, see :doc:`cookiecutter`

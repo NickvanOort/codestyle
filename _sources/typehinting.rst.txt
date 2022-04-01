@@ -1,0 +1,64 @@
+Typehinting
+===========
+
+Basic typehinting
+-----------------
+
+Since python version 3.5, there is support for typehinting.
+An overview of all PEPs can be found `here <https://docs.python.org/3/library/typing.html>`_
+A simplified introduction can be found in `PEP 483 <https://www.python.org/dev/peps/pep-0483/>`_ , While
+a full specification can be found in `PEP 484 <https://www.python.org/dev/peps/pep-0484/>`_
+
+As a very short introduction: instead of code like this
+
+
+.. code-block:: python
+
+   def impute(
+       df, group_cols, metric = "mean"
+   ):
+   ...
+
+your will write code like this:
+
+.. code-block:: python
+
+   from typing import List
+   import pandas as pd
+
+   def impute(
+       df: pd.DataFrame, group_cols: List[str], metric: str = "mean"
+   ) -> pd.DataFrame:
+   ...
+
+While it often seems clear at the time you wrote the code what every argument
+should look like, and often can be inferred from e.g. a notebook or some other context,
+I might not be that clear to someone editing your code, or to yourselve after 6 months.
+
+In addition to that, your code might still run if you pass a wrong type.
+
+- The most common types are things like ``str``, ``int```, ``float``, ``List``, ``Set```, ``Dict```.
+- There are additional constructs like ``None``, ``Union``, ``Tuple`` and ``Optional``.
+
+Protocol
+--------
+It is also possible to create your own generic types with ``Protocol``, which was introduced
+with `PEP 544 <https://www.python.org/dev/peps/pep-0544/>`_
+A simple example is this:
+
+.. code-block:: python
+
+   from typing import Protocol, Callable
+
+   class GenericModel(Protocol):
+      predict: Callable
+      train: Callable 
+
+    
+    def train_model(estimators: List[GenericModel]) -> List[GenericModel]
+    ...
+
+What this will tell you, is dat the function ``train_model`` does not care if you 
+pass it a ``sklearn`` or ``torch`` model; the only thing it needs is that you pass 
+it a list of models, and every model should have a ``.predict`` and ``.train`` method.
+Read more about it in `this blog <https://www.daan.fyi/writings/python-protocols>`_

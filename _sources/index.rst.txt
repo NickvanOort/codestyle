@@ -1,0 +1,37 @@
+Welcome to the B&D coding standards documentation
+=================================================
+
+This is a very opiniated collection of best practices, style guides and preferred libraries.
+
+However, to quote `PEP 8 <https://www.python.org/dev/peps/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds>`_
+
+.. note::
+
+   A style guide is about consistency. 
+   Consistency with this style guide is important. 
+   Consistency within a project is more important. 
+   Consistency within one module or function is the most important.
+
+   However, know when to be inconsistent 
+   -- sometimes style guide recommendations just aren't applicable.
+   When in doubt, use your best judgment.
+
+For a deep dive, check out the :doc:`tldr`
+
+.. note::
+
+   This project is under active development.
+
+Contents
+--------
+
+.. toctree::
+
+   tldr
+   motivation
+   libraries
+   classes
+   typehinting
+   linting
+   poetry
+   cookiecutter

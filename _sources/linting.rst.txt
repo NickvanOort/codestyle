@@ -1,0 +1,84 @@
+Linting
+=======
+By default, I will install the following libraries for linting:
+
+- ``black``
+- ``flake8``
+- ``isort``
+- ``mypy``
+- ``pep8-naming``
+- ``flake8-annotations``
+
+And I will create a ``Makefile`` with this template:
+
+.. code-block::
+
+    .PHONY: lint format
+
+    format:
+            poetry run isort -v src
+            poetry run black src
+
+    lint:
+            poetry run flake8 src
+            poetry run mypy --no-strict-optional --warn-unreachable --show-error-codes src
+
+Alternatively, you can also run directly from the command line things like ``black src``, 
+which will format all python files inside the ``src/`` folder
+
+Formatters
+----------
+``black`` calls itself the `uncompromising code formatter`. It is very opiniated about 
+formatting code, but does this in a consistent style. You hand over control about 
+formatting, but you will get consistency in return and never have to think about formatting
+again. read the `black docs <https://github.com/psf/black>`_
+
+``isort`` is much less invasive. Only thing it does is sorting your imports. But, yeah, why
+not, it is anoying to sort those too so why not automate that `isort <https://pycqa.github.io/isort/>`_
+
+Type checkers
+-------------
+After running the formatters, I can run `flake8 <https://flake8.pycqa.org/en/latest/>`_. 
+Black will take care of all the nitty gritty `PEP 8 details <https://www.python.org/dev/peps/pep-0008/>`_, so a lot of errors will go away
+after running the formatters. However, there can still be stuff worth looking at.
+
+However, some checks are too tight, so typically I will use a tox.ini or setup.cfg file with a snippet like this:
+
+.. code-block:: 
+
+    [flake8]
+    ignore = W503, ANN101, ANN002, ANN003
+    max-line-length = 88
+    max-complexity = 12
+    exclude = __init__.py
+
+- W503 is not compatible with black.
+- ANN101 is annotation for `self`, which gives me too much headaches and is not worth the struggle.
+- ANN002, ANN003 is annotation for \*args and \*\*kwargs, which is annoying too.
+- max-line-lenght 88 is compatible with black default
+- max-complexity This feature is quite useful to detect over-complex code. According to McCabe, anything that goes beyond 10 is too complex. See `<https://en.wikipedia.org/wiki/Cyclomatic_complexity>`_
+
+I will also occasionally overwrite errors in specifice lines with `# noqa` comments, see `ignoring errors <https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html>`_
+
+Finally, ``mypy``. Together with ``flake8-annotations`` and ``pep8-naming``, and after running the formatters, 
+you will typically still get a lot of errors, especially in the beginning. Using the linter and
+investigating errors is how I learned to use typehinting properly.
+
+After you added proper typehinting everywhere, mypy will start checking consistency.
+
+Imagine you have a function that retrieves the median of a list of customers,
+and it is important that the customers are discrete counts, and thus an integer. The custom 
+median function will return an ``int``, but the ``get_value`` function expects a ``float``. This 
+is inconsistent, and you should make up your mind about the types. Obviously, this is a simple
+example, but at some point you might get pretty complex datastructures and mypy will help 
+you to keep your code consistent and warn you about loopholes that might cause errors, even 
+though your code would function fine when you are testing it now.
+
+.. code-block:: python
+
+    def median(values: List[int]) -> int
+        ...
+        return x
+    
+    def get_value(data: List[float]) -> float
+        return median(data) # inconsistent: this returns an int

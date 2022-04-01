@@ -1,0 +1,43 @@
+Data Science cookiecutter
+=========================
+
+This template identifies itself as
+
+.. code-block:: text
+
+    A logical, reasonably standardized, but flexible project structure 
+    for doing and sharing data science work.
+
+
+To every data science project, there is a typical workflow. You will need to ingest data,
+which often needs to be preprocessed before you can start visualizing or predicting.
+
+This process will typically grow organically and iteratively. That means that you will start 
+to create functions, extend them, explore and visualize and add some more.
+
+Before you know it, your project has grown into a jungle of jupyter notebooks, with preprocessing,
+visualization and models all interconnected. Reproducing the exact steps might become difficult,
+especially if someone else picks up your project, especially after 6 months...
+
+So, using a cookiecutter is not just for yourself: other people will thank you because the structure
+of your code is self explanatory.
+
+Also, you will thank you, because after a few months it can be very hard to figure out what the correct
+order or structure was. With the data science cookiecutter structure, you will have a flexible framework
+that is strong enough to be used all the way to a stand-alone python module.
+
+Setup
+-----
+
+First, you should install cookiecutter with either ``poetry add cookiecutter --dev`` to install it to your project,
+or ``pip install cookiecutter`` to install cookiecutter globally (which could makes sense).
+
+After that, setting up a template is as simple as
+
+.. code-block:: bash
+
+    $ cookiecutter https://github.com/drivendata/cookiecutter-data-science
+
+This will install a complete template. It will add a README file that explains the structure; in 
+addition to that, you can read more details in the `datascience cookiecutter docs <https://drivendata.github.io/cookiecutter-data-science/>`_
+

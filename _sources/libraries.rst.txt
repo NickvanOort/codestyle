@@ -1,0 +1,75 @@
+Libraries
+=========
+
+To perform the same function, there are often multiple implementations. 
+There are some cases where some libraries do a better job than others.
+
+paths
+-----
+Instead of using ``os.path``, use ``pathlib.Path``.
+see the `pathlib docs <https://docs.python.org/3/library/pathlib.html>`_ for more.
+
+It is less clunky. Compare:
+
+.. code-block:: python
+
+    import os
+    filepath = os.path.join(os.path.expanduser("~"), "data", "file.txt")
+
+with
+
+.. code-block:: python
+
+    from pathlib import Path
+    filepath = Path.home() / "data" / "file.txt"
+
+If we want the filename without the suffix, with ``os`` we would need to do:
+
+.. code-block:: python
+
+    basefile = os.path.splittext(os.path.basename(filepath)[0]
+    suffix = os.path.splittext(os.path.basename(filepath))[-1]
+
+where as pathlib would give us:
+
+.. code-block:: python
+
+    basefile = filepath.stem
+    suffix = filepath.suffix
+
+There are more examples, but these two examples show enough of the difference that you should be 
+convinced never to look back.
+
+loguru
+------
+
+Often, you want to show some output of your code halfway a process.
+While you could use ``print`` statements, using a logger is a better practice.
+You get control over levels of statements, there is more syntax (eg timestamps) to the
+log, you can manage logging to files etc.
+see the `loguru docs <https://github.com/Delgan/loguru>`_ for more.
+
+Some examples:
+
+.. code-block:: python
+
+    from loguru import logger
+    logger.info("That's it!")
+
+By default this will add coloring, timestamps, location etc to your ``stderr``
+
+Adding logging files is easy configurable:
+
+.. code-block:: python
+
+    logger.add("logfile.log", rotation="1 week")
+
+Or decorators to catch exceptions:
+
+.. code-block:: python
+
+    @logger.catch
+    def my_fun(x, y, z):
+    # error? it's caught anyway
+    return (x + y) / z
+
