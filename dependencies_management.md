@@ -1,6 +1,6 @@
 ## Virtual environments
 
-Now we get to a hot potato of Python: dependency management and virtual environments. Different packages and modules not only depend on different versions of Python [as explained here](02_version_management.md), but often also require (specific versions of) other packages. If these versions do not correspond, there is a good chance that your code will not work.
+Now we get to a hot potato of Python: dependency management and virtual environments. Different packages and modules not only depend on different versions of Python [as explained here](version_management.md), but often also require (specific versions of) other packages. If these versions do not correspond, there is a good chance that your code will not work.
 
 This is where virtual environments and dependency management comes into play. Virtual environments are project specific. You can think of virtual environments as secluded spaces on your computer, where you can install a specific version of Python and all the packages (running on this specific Python version) you need for a specific project. Like an island with it's own specific (Python) eco-system. This way, you can have multiple projects on your computer, each with their own virtual environment, and each with their own versions of python and corresponding package versions.
 
@@ -15,11 +15,14 @@ These version requirements of packages in a project, is called dependency manage
 Therefore, we have chosen to use `rye` as our dependency manager. It is not perfect either, but implements some of the best practices available and helps avoid a lot of problems.
 
 #### 0. Python native venvs
+
 With python, you can create virtual environments that isolate your dependencies. It works like this:
 To create a virtual environment, open your command prompt or terminal and navigate to the directory where you want to create the virtual environment.
+
 ```bash
 python -m venv .venv
 ```
+
 This command will create a new virtual environment in a directory named .venv in your current working directory.
 
 You need to activate the virtual environment to work within it.
@@ -27,20 +30,26 @@ You need to activate the virtual environment to work within it.
 ```bash
 source .venv/bin/activate
 ```
+
 Once activated, you'll see the virtual environment's name in your command prompt, indicating that you are now working within the virtual environment.
 With the virtual environment activated, you can use pythons native `pip` to install packages and dependencies. For example, to install a package named example-package, use:
+
 ```bash
 pip install example-package
 ```
+
 To leave the virtual environment and return to your system's Python environment, you can deactivate it. Simply run:
+
 ```bash
 deactivate
 ```
 
 If you no longer need the virtual environment, you can delete it. Ensure the virtual environment is deactivated first. Then, you can remove the entire directory:
+
 ```bash
 rm -rf .venv
 ```
+
 This example is to show you how this would work with base python. However, we can use PDM to both create a .venv and install the packages from a pyproject.toml file, so you dont need to manage it with pip and write the dependencies down in a requirements.txt file, adding version constraints manually.
 
 #### 1. PDM centralizes dependencies in pyproject.toml

@@ -1,4 +1,5 @@
 # Encapsulation
+
 Encapsulation is one of the fundamental principles of object-oriented programming (OOP). It refers to the bundling of data and the methods that operate on that data within a single unit or object. This principle provides several important benefits in software design and development:
 
 - Hiding implementation details: Encapsulation allows the internal details of an object to be hidden from the outside world. The object's internal state is kept private and can only be accessed or modified through defined methods.
@@ -15,10 +16,10 @@ The Single Responsibility Principle (SRP) is another principle of object-oriente
 By following the Single Responsibility Principle:
 
 1. Our code becomes more modular and easier to understand
-2. Each class can be tested independently
-3. Changes to one aspect of the system don't affect other parts
-4. The code is more flexible and easier to maintain
-5. Each class can be modified or replaced without impacting others
+1. Each class can be tested independently
+1. Changes to one aspect of the system don't affect other parts
+1. The code is more flexible and easier to maintain
+1. Each class can be modified or replaced without impacting others
 
 Note how Encapsulation and SRP have overlap!
 
@@ -56,7 +57,7 @@ print("Data processing completed and saved to 'processed_messages.csv'")
 ```
 
 There are two main things going on in this code: there is filehandling (loading and saving), and the loaded data
-is preprocessed. Note how we try to make what we are doing slightly more abstract; it is 
+is preprocessed. Note how we try to make what we are doing slightly more abstract; it is
 not about just getting the job done now, but also to write code we can use more often,
 in more situations.
 
@@ -132,6 +133,7 @@ if __name__ == "__main__":
 ```
 
 We can see how the single responsibility principle and Encapsulation is applied in this refactored code:
+
 ## FileHandler Class
 
 - **Responsibility**: Handling file I/O operations
@@ -173,7 +175,8 @@ Yes, for this small script, you could argue that it is overengineerd. It also ta
 I hope you will agree that the main() method is clearer in it's function. Now imagine your codebase grows to 10.000 lines of code; at that point you will be really happy you organized your code as in the second example, and avoided code like in the first example...
 
 # Trade off (or, when to stop)
-This is always a trade off. For example, we could further improve the filehandling by abstracting away how the filetype should be handled. It really depends on the scale of your project if you want this additional layer of automation, or if you just extend your FileHandler with load_parquet and save_parquet methods... 
+
+This is always a trade off. For example, we could further improve the filehandling by abstracting away how the filetype should be handled. It really depends on the scale of your project if you want this additional layer of automation, or if you just extend your FileHandler with load_parquet and save_parquet methods...
 
 ```python
 class FileHandler:

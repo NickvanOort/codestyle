@@ -1,0 +1,27 @@
+[project]
+name = "codestyle"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Raoul Grouls", email = "Raoul.Grouls@han.nl" }
+]
+dependencies = [
+    "lefthook>=1.8.1",
+    "mdformat>=0.7.18",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/codestyle"]

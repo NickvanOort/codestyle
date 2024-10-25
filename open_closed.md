@@ -4,7 +4,7 @@ To understand how open-closed works, I have created a file in the src folder. Pl
 
 In the file, I demonstrate how the **Open-Closed Principle** (OCP) is applied. This principle states that software entities (classes, functions, etc.) should be open for extension but closed for modification. We'll walk through the code, explaining how it adheres to this principle.
 
----
+______________________________________________________________________
 
 ### Imports
 
@@ -24,7 +24,7 @@ from loguru import logger
 - `matplotlib`, `seaborn`, and `pandas` are used for plotting and handling data.
 - `loguru` is a logging tool for reporting the progress of the script.
 
----
+______________________________________________________________________
 
 ### Base Plotting Class
 
@@ -44,6 +44,7 @@ class BasePlot:
         sns.scatterplot(data=self.data, x="x", y="y", ax=self.ax)
         self.ax.set_title(title)
 ```
+
 - **Plot method**: Here, we create a scatter plot using Seaborn. As noted before, passing the ax object is not required by Seaborn but is a good practice as it ensures that the plot is drawn on the right axes (which we defined in the constructor). If `ax` is omitted, Seaborn would plot on the default axes, which might lead to confusion.
 
 ```python
@@ -54,7 +55,7 @@ class BasePlot:
 
 - **Save method**: This method saves the figure to a file. We close the figure after saving it to free up memory, especially useful when dealing with many plots.
 
----
+______________________________________________________________________
 
 ### Abstract Base Class for Annotations
 
@@ -70,7 +71,7 @@ class Annotation(ABC):
 - The `Annotation` class is an abstract base class (ABC). This means it provides a common interface for all annotation types but doesn't implement any functionality itself. The `annotate` method is defined as an abstract method, which means any subclass must provide its own implementation.
 - **Why use ABC?**: ABCs are useful when you want to define common behavior for subclasses but leave the actual implementation up to each subclass. If you know that multiple subclasses will share a method (like `annotate`), but the details will vary, this is an ideal solution. If your system requires more flexibility, an ABC might not be necessary.
 
----
+______________________________________________________________________
 
 ### Concrete Annotations
 
@@ -84,7 +85,6 @@ class TrendlineAnnotation(Annotation):
 
 - **TrendlineAnnotation**: This class adds a trendline to the plot. It uses `regplot` from Seaborn to draw a regression line without scatter points (`scatter=False`).
 - **NOTE** you might also decide to abstract away the hardcoded variable names and the color. See more details about this in [never hardcode](never_hardcode.md), [encapsulation](encapsulation.md) and [pydantic](pydantic.md). In the rest of this file I will ignore the hardcoding, the avoid explaining multiple principles at the same time, but keep in mind that every time you hardcode something, a kitten dies.
-
 
 ```python
 class MaxPointAnnotation(Annotation):
@@ -115,7 +115,7 @@ class MeanLineAnnotation(Annotation):
 
 - **MeanLineAnnotation**: This class adds a horizontal line representing the mean `y` value. The line is labeled with the value of the mean.
 
----
+______________________________________________________________________
 
 ### Extending the Plot Class for Annotations
 
@@ -146,9 +146,9 @@ def add_annotation(self, annotation: Annotation):
 
 - **Plot method**: We first call the `plot` method of the `BasePlot` class using `super()`. This makes sure the title is added, and the base scatterplot is created. After that, we can start extending by looping through all the annotations and apply each one to the plot. This shows how we can extend the functionality of the plot without modifying the `BasePlot` class, adhering to the **Open-Closed Principle**.
 
-    - **Why use `super().plot()`?**: By calling `super()`, we ensure that the plotting logic from the base class is executed before we apply any annotations. This promotes reuse and avoids code duplication.
+  - **Why use `super().plot()`?**: By calling `super()`, we ensure that the plotting logic from the base class is executed before we apply any annotations. This promotes reuse and avoids code duplication.
 
----
+______________________________________________________________________
 
 ### Main Execution
 
@@ -156,4 +156,3 @@ Finally, the main block of the script demonstrates how to use the `AnnotatedPlot
 
 - **img_folder**: We create a folder to store the plots if it doesn't already exist.
 - **AnnotatedPlot**: We instantiate `AnnotatedPlot` and add different annotations in steps, showing how we can easily extend the functionality without modifying the existing code. This is a nice illustration of the **Open-Closed Principle** in action.
-

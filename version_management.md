@@ -32,7 +32,7 @@ curl -sSf https://rye.astral.sh/get | bash
 or for windows, download the installer from the [website](https://rye.astral.sh/).
 
 In general:
+
 - pick uv instead of pip, it's about 10x faster
 - pick python 3.11 as a default. Rye will make it easy to install other versions if you need them.
 - watch [the video](https://rye.astral.sh/guide/) on rye. Really, it helps!
-

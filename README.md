@@ -28,9 +28,9 @@ The topics cover different subjects; some are more a preference for one library 
 | [Prefer pathlib.Path over os.path](pathlib.md)                                   | 💡                 | 🏅                | 🏅       | 🏅          |
 | [Prefer loguru over print](loguru.md)                                            | 💡                 | 🏅                | 🏅       | 🏅          |
 | [Use pydantic for all settings](pydantic.md)                                     | 💡                 | 🏅                | 🏅       | 🏅          |
-| [pyproject.toml for dependencies](03_dependencies_management.md) | 💡                 | 🏅                | 🏅       | 🏅      |
+| [pyproject.toml for dependencies](dependencies_management.md) | 💡                 | 🏅                | 🏅       | 🏅      |
 | [Use cookiecutters](cookiecutter.md)                                             | 💡                 | 🏅                | 🏅       | 🏅          |
-| [Git](01_git_basics.md)                                                   | 💡                 | 🏅                | 🏅       | 🏅          |
+| [Git](git_basics.md)                                                   | 💡                 | 🏅                | 🏅       | 🏅          |
 | [Use formatters and linting](linting.md)                                         | 💡                 | 🏅                | 🏅       | 🏅          |
 | [Use typehinting](typehinting.md)                                                | 🐌                 | 💡                | 🏅       | 🏅          |
 | [Add a README](add_a_readme.md)                                     | 🐌                 | 💡                | 🏅       | 🏅          |

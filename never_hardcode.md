@@ -70,6 +70,7 @@ if __name__ == '__main__':
 ```
 
 In contrast to the previous code, the refactored code will:
+
 - run on everyones filesystem, not just on the current setup of Jan's laptop
 - it will check if the path exists and print the path if the file is not found
 - read the timecolumn as specified in the settings. If the column name every changes, you will have to change it at a single, central location.

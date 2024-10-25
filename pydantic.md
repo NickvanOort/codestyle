@@ -14,7 +14,8 @@ config = {"input_size": 3, "output_size": 20, "data_dir": "."}
 
 While this will work perfectly fine if you are prototyping, at some point your project will grow bigger and you will want to have more control over your parameters.
 
-A basic way to improve upon the dict is to use a dataclass; 
+A basic way to improve upon the dict is to use a dataclass;
+
 ```python
 from dataclasses import dataclass
 
@@ -26,7 +27,7 @@ class SearchSpace:
     data_dir: Path
 ```
 
-This will create a class with the parameters you need. However, it does not provide any checks on the parameters. You could create `Searchspace.input_size = "hi"` and python won't complain. While it is better than the dict, because it gives you more control over the items inside the object, you can have stricter checks by using pydantic: 
+This will create a class with the parameters you need. However, it does not provide any checks on the parameters. You could create `Searchspace.input_size = "hi"` and python won't complain. While it is better than the dict, because it gives you more control over the items inside the object, you can have stricter checks by using pydantic:
 
 Pydantic helps with a lot of things. First of all, it will help you to define the types of your parameters. This will help you to catch bugs early on!
 At the moment the wrong type is passed, pydantic will first try to convert it to the correct type. If this fails, it will raise an error.
