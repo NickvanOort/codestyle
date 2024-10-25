@@ -24,20 +24,20 @@ The topics cover different subjects; some are more a preference for one library 
 
 | Topic                                                                            | Testing a Concept | Proof of Concept | Product | Deployment |
 | -------------------------------------------------------------------------------- | ----------------- | ---------------- | ------- | ---------- |
-| [never hardcode](never_hardcode.md)                                   | 💡                 | 🏅                | 🏅       | 🏅          |
-| [Prefer pathlib.Path over os.path](pathlib.md)                                   | 💡                 | 🏅                | 🏅       | 🏅          |
-| [Prefer loguru over print](loguru.md)                                            | 💡                 | 🏅                | 🏅       | 🏅          |
-| [Use pydantic for all settings](pydantic.md)                                     | 💡                 | 🏅                | 🏅       | 🏅          |
-| [pyproject.toml for dependencies](dependencies_management.md) | 💡                 | 🏅                | 🏅       | 🏅      |
-| [Use cookiecutters](cookiecutter.md)                                             | 💡                 | 🏅                | 🏅       | 🏅          |
-| [Git](git_basics.md)                                                   | 💡                 | 🏅                | 🏅       | 🏅          |
-| [Use formatters and linting](linting.md)                                         | 💡                 | 🏅                | 🏅       | 🏅          |
-| [Use typehinting](typehinting.md)                                                | 🐌                 | 💡                | 🏅       | 🏅          |
-| [Add a README](add_a_readme.md)                                     | 🐌                 | 💡                | 🏅       | 🏅          |
-| [Encapsulation, SRP](encapsulation.md)                                                                    | 🐌                 | 💡                | 🏅       | 🏅          |
-| [Open-Closed Principle](open_closed.md)                                                            | 🐌                 | 💡                | 🏅       | 🏅          |
+| [never hardcode](docs/never_hardcode.md)                                   | 💡                 | 🏅                | 🏅       | 🏅          |
+| [Prefer pathlib.Path over os.path](docs/pathlib.md)                                   | 💡                 | 🏅                | 🏅       | 🏅          |
+| [Prefer loguru over print](docs/loguru.md)                                            | 💡                 | 🏅                | 🏅       | 🏅          |
+| [Use pydantic for all settings](docs/pydantic.md)                                     | 💡                 | 🏅                | 🏅       | 🏅          |
+| [pyproject.toml for dependencies](docs/dependencies_management.md) | 💡                 | 🏅                | 🏅       | 🏅      |
+| [Use cookiecutters](docs/cookiecutter.md)                                             | 💡                 | 🏅                | 🏅       | 🏅          |
+| [Git](docs/git_basics.md)                                                   | 💡                 | 🏅                | 🏅       | 🏅          |
+| [Use formatters and linting](docs/linting.md)                                         | 💡                 | 🏅                | 🏅       | 🏅          |
+| [Use typehinting](docs/typehinting.md)                                                | 🐌                 | 💡                | 🏅       | 🏅          |
+| [Add a README](docs/add_a_readme.md)                                     | 🐌                 | 💡                | 🏅       | 🏅          |
+| [Encapsulation, SRP](docs/encapsulation.md)                                                                    | 🐌                 | 💡                | 🏅       | 🏅          |
+| [Open-Closed Principle](docs/open_closed.md)                                                            | 🐌                 | 💡                | 🏅       | 🏅          |
 | Makefiles or shell scripts                                     | 🐌                 | 💡                | 🏅       | 🏅          |
-| [Abstract classes (ABC, Protocol)](typehinting.md)                               | 🐌                 | 🐌                | 💡       | 🏅          |
+| [Abstract classes (ABC, Protocol)](docs/typehinting.md)                               | 🐌                 | 🐌                | 💡       | 🏅          |
 | Write tests (pytest)                                                             | 🐌                 | 🐌                | 💡       | 🏅          |
 
 ## 1. Two cultures
