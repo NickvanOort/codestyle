@@ -43,7 +43,6 @@ for filepath in Path.home().glob("*.txt"):
 
 This will print all the files in your home directory that end with .txt.
 
-
 There is always a lot of confusion about paths for people that start with programming. So make sure to check [path.md](path.md), in addition to checking if a path exists:
 
 ```python
