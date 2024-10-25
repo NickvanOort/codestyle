@@ -52,7 +52,7 @@ rm -rf .venv
 
 This example is to show you how this would work with base python. However, we can use PDM to both create a .venv and install the packages from a pyproject.toml file, so you dont need to manage it with pip and write the dependencies down in a requirements.txt file, adding version constraints manually.
 
-#### 1. PDM centralizes dependencies in pyproject.toml
+#### 1. organize dependencies in pyproject.toml
 
 **The first reason is that it uses the `pyproject.toml` file to store dependencies**, according to the [pep 621](https://peps.python.org/pep-0621/) standard for python projects. You can think of a `.toml` file as a bunch of settings and requirements that apply to your project.
 
