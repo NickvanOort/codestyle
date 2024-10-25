@@ -68,7 +68,7 @@ In general, there will always be exceptions to the rule. The rule of thumb is:
 
 > follow the coding standards, unless there is a good reason not to.
 
-E.g. there are reasons why `pdm` is a better environment manager than `pip`, but some could environments dont work well with `pdm`, so in that case falling back to `pip` could be a good idea.
+E.g. there are reasons why `rye` is a better environment manager than `pip`, but some environments might not work well with `rye`, so in that case falling back to `pip` could be a good idea.
 
 ## 3. Development stages
 
