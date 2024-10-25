@@ -5,3 +5,6 @@ pre-commit:
     md:
       run: mdformat .
 
+    check_orphans:
+      run: ./find_orphans.sh
+

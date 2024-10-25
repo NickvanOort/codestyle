@@ -37,4 +37,3 @@ For more advanced use you van check out the tutorials on [GitLens](https://www.y
 From the tutorials above, you got a taste of how a git workflow looks like. There are many different ways to work with git. In large development teams, GitFlow is widely used. But for smaller teams and projects, Scaled Trunk Based Git (also called Feature Branch Workflow) is a more lightweight alternative. We will be using this workflow in class and will teach and support you to use this workflow in your projects. To learn what the Scaled Trunk Based Git Workflow is, continue with this [tutorial](trunk_based_git.md).
 
 If you are interested in learning more about the more complex GitFlow, you can check out this [very short video on its structure](https://www.youtube.com/watch?v=1SXpE08hvGs&ab_channel=TraversyMedia). For a simple and accessible comparison of different implementations of GitFlow, check out [this short video](https://www.youtube.com/watch?v=7lgGEXpsflI).
-
