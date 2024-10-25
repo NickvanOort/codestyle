@@ -25,7 +25,7 @@ typically not needed.
 
 Thats why I created my own version of a cookiecutter.
 You can find it on pypi [here](https://pypi.org/project/datascience-cookiecutter/).
-This means you can easily install it with `pdm add datascience-cookiecutter` (or, of course,
+This means you can easily install it with `rye add datascience-cookiecutter` (or, of course,
 `pip install datascience-cookiecutter` if you want to).
 
 There is a default template that looks like this:
