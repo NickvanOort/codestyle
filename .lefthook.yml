@@ -3,8 +3,9 @@ pre-commit:
     lychee:
       run: lychee . --suggest --max-concurrency 32 --cache --format detailed --header "accept=*/*" --max-cache-age 7d
     md:
-      run: mdformat .
-
-    check_orphans:
-      run: ./find_orphans.sh
+      glob: "*.md"
+      run: mdformat {all_files}
+  scripts:
+    "find_orphans.sh":
+      runner: bash
 
