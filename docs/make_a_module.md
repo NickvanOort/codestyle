@@ -25,7 +25,7 @@ This file makes a directory a Python package. It can be empty or explicitly decl
 
 ```python
 # src/mymodule/__init__.py
-from .main import some_function
+from mymodule.main import some_function
 
 # Explicitly declare public API
 __version__ = "0.1.0"
@@ -51,6 +51,45 @@ build-backend = "hatchling.build"
 
 [project.scripts]
 mymodule = "mymodule.main:main"
+```
+
+When you add this to your `pyproject.toml`:
+
+```toml
+[project.scripts]
+mymodule = "mymodule.main:main"
+```
+
+This creates a command-line script that you can run from anywhere. Let's break down how it works:
+
+```
+mymodule        = "mymodule.main:main"
+^                 ^        ^     ^
+|                 |        |     |
+Command name      Module   File  Function
+```
+
+- Left side (mymodule): The command name you'll type in your terminal
+- Right side ("mymodule.main:main"): Where to find the code to run
+- Before the colon: Python import path to the file
+- After the colon: Function name to call
+
+## How to Use It
+
+First, install your package:
+`pip install -e .` or, with rye, doing `rye sync` install your package.
+Now you can run your code by just typing:
+`mymodule`
+
+## Multiple Scripts
+
+You can define multiple entry points:
+
+```toml
+[project.scripts]
+mymodule = "mymodule.main:main"
+mymodule-init = "mymodule.commands:initialize"
+mymodule-cleanup = "mymodule.commands:cleanup"
 ```
 
 ## main.py
