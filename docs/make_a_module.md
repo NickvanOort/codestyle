@@ -1,5 +1,16 @@
 # Python Project Structure Guide
 
+Beginners like jupyter notebooks because of the interactivity and short feedback loops.
+However, they have a lot of downsides, too;
+
+- it's often not clear which notebooks to run in which order
+- you dont typically want to tell your client to run notebooks
+- notebooks are harder to interact with in automated way
+
+Jupyter notebooks are a nice solution for a teaching context, but they should be left
+behind in a production context. So, at some point, you need to grow up beyond just
+notebooks and learn how to create a python module.
+
 ## Basic Project Structure
 
 A typical Python project structure looks like this:
@@ -104,6 +115,15 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+What Does This Do?
+When Python runs a file, it sets special variables. One of them is __name__:
+
+When you run the file directly: __name__ = '__main__'
+When you import the file: __name__ = the module's name
+
+This means that if you have control over what should be done if you run it directly,
+versus what happens when you just import.
 
 # Importing Between Files
 
