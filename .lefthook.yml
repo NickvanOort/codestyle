@@ -4,11 +4,11 @@ pre-commit:
       run: lychee . --suggest --max-concurrency 32 --cache --format detailed --header "accept=*/*" --max-cache-age 7d
     md:
       glob: "*.md"
-      run: mdformat {all_files}
+      run: mdformat {staged_files}
     toc:
       # run: markdown-toc docs/make_a_module.md
       glob: "*.md"
-      run: markdown-toc {all_files}
+      run: markdown-toc {staged_files}
   scripts:
     "find_orphans.sh":
       runner: bash
