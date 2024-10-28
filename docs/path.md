@@ -1,5 +1,11 @@
 # The many faces of Path
 
+# Table of Contents
+
+- [The PATH environment variable](#The-PATH-environment-variable)
+- [PYTHONPATH](#PYTHONPATH)
+- [Paths as in Filepaths](#Paths-as-in-Filepaths)
+
 There are few topics that seem to cause so much confusion as paths for beginners. This is probably because there are a lot of different situations where we refer to things as "paths", and they all have their own quirks.
 
 # The PATH environment variable

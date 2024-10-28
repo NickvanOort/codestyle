@@ -1,5 +1,10 @@
 # Linting
 
+# Table of Contents
+
+- [Formatters](#Formatters)
+- [Type checkers](#Type-checkers)
+
 By default, I will install the following libraries for linting:
 
 - `black`

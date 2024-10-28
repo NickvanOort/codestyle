@@ -1,5 +1,12 @@
 ## Intoduction
 
+# Table of Contents
+
+- [How does Git Work?](#How-does-Git-Work?)
+- [Git through the Command Line](#Git-through-the-Command-Line)
+- [Git through VS Code](#Git-through-VS-Code)
+- [Git Workflows](#Git-Workflows)
+
 If you are new to git we do not expect you to master Git's commands and workflow right away. You are going to practice in class with git and during the course you will be using git frequently. So we will be there to help and guide you in working with git proficiently.
 
 To below material is for you to gain a basic understanding of how git works and how to use it. You do not have to be able to apply this right away, but we recommend that you watch the videos and read the material to get a feel for git and it's basic commands.

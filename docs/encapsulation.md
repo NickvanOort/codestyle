@@ -1,5 +1,16 @@
 # Encapsulation
 
+# Table of Contents
+
+- [Single Responsibility Principle in Our Code Examples](#Single-Responsibility-Principle-in-Our-Code-Examples)
+  - [Benefits of Adhering to SRP](#Benefits-of-Adhering-to-SRP)
+  - [FileHandler Class](#FileHandler-Class)
+  - [DataPreprocessor Class](#DataPreprocessor-Class)
+  - [Regex Dataclass](#Regex-Dataclass)
+  - [Config Dataclass](#Config-Dataclass)
+  - [Practical Implications](#Practical-Implications)
+- [Trade off (or, when to stop)](<#Trade-off-(or,-when-to-stop)>)
+
 Encapsulation is one of the fundamental principles of object-oriented programming (OOP). It refers to the bundling of data and the methods that operate on that data within a single unit or object. This principle provides several important benefits in software design and development:
 
 - Hiding implementation details: Encapsulation allows the internal details of an object to be hidden from the outside world. The object's internal state is kept private and can only be accessed or modified through defined methods.

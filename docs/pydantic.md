@@ -1,5 +1,11 @@
 # Pydantic
 
+# Table of Contents
+
+- [Creating configuration settings](#Creating-configuration-settings)
+- [field validators](#field-validators)
+- [Mutable attributes](#Mutable-attributes)
+
 While creating larger projects, we will typically end up having a lot of parameters. While the fastest way might seem to just hardcode them somewhere, this is not a valid long-term strategy.
 
 Especially when doing experiments with machine learning, we will want to have everything in one place, and ideally we want to have checks in place.

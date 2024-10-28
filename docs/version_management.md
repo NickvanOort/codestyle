@@ -1,5 +1,9 @@
 # Python version management
 
+# Table of Contents
+
+- [Managing python versions](#Managing-python-versions)
+
 ![python versions xkcd](https://imgs.xkcd.com/comics/python_environment.png)
 
 Unfortunately, Python is a language that does not have a robust dependency management as a default. The result is that over the years, a lot of different tools have accumulated in different attempts to solve this problem.

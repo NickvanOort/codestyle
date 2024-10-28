@@ -5,6 +5,10 @@ pre-commit:
     md:
       glob: "*.md"
       run: mdformat {all_files}
+    toc:
+      # run: markdown-toc docs/make_a_module.md
+      glob: "*.md"
+      run: markdown-toc {all_files}
   scripts:
     "find_orphans.sh":
       runner: bash

@@ -1,5 +1,14 @@
 # Code Walkthrough: Demonstrating the Open-Closed Principle (OCP)
 
+# Table of Contents
+
+- [Imports](#Imports)
+- [Base Plotting Class](#Base-Plotting-Class)
+- [Abstract Base Class for Annotations](#Abstract-Base-Class-for-Annotations)
+- [Concrete Annotations](#Concrete-Annotations)
+- [Extending the Plot Class for Annotations](#Extending-the-Plot-Class-for-Annotations)
+- [Main Execution](#Main-Execution)
+
 To understand how open-closed works, I have created a file in the src folder. Please have a look at `dev/open_closed.py`. This markdown file describes and explains all of the code in that file. You can test the file for yourself by activating the `.venv` and running `python dev/open_closed.py`. Have a look at the different images that are created in the `img` folder.
 
 In the file, I demonstrate how the **Open-Closed Principle** (OCP) is applied. This principle states that software entities (classes, functions, etc.) should be open for extension but closed for modification. We'll walk through the code, explaining how it adheres to this principle.

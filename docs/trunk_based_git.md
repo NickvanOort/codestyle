@@ -1,5 +1,12 @@
 # 🌳 Scaled Trunk Based Git Development 🌳
 
+# Table of Contents
+
+- [Motivation](#Motivation)
+- [Gitflow and Deployment](#Gitflow-and-Deployment)
+- [Main Rules of Scaled Trunk Based](#Main-Rules-of-Scaled-Trunk-Based)
+- [Example in Bash](#Example-in-Bash)
+
 ## Motivation
 
 Trunk Based Git Development aims to simplify the development workflow by promoting a single main branch approach, and feature branches for new features. It encourages continuous integration and collaboration among team members, leading to faster feedback loops and efficient development cycles.

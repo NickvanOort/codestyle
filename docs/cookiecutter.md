@@ -1,5 +1,10 @@
 # Cookiecutters
 
+# Table of Contents
+
+- [Motivation](#Motivation)
+- [Using a cookiecutter](#Using-a-cookiecutter)
+
 ## Motivation
 
 The text below is copied from [cookiecutter-data-science](https://drivendata.github.io/cookiecutter-data-science/) and is an excellent introduction in datascience cookiecutters:

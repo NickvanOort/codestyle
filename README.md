@@ -1,15 +1,15 @@
 # Code style standards
 
-Table of contents
+# Table of Contents
 
-- [0. Overview of topics](#0-overview-of-topics)
-- [1. Two cultures](#1-two-cultures)
-- [2. The pros and cons of Pythons flexibility](#2-the-pros-and-cons-of-pythons-flexibility)
-- [3. Development stages](#3-development-stages)
-  - [Testing a concept](#testing-a-concept)
-  - [Proof of concept](#proof-of-concept)
-  - [Product](#product)
-  - [Deployment](#deployment)
+- [0. Overview of topics](#0.-Overview-of-topics)
+- [1. Two cultures](#1.-Two-cultures)
+- [2. The pros and cons of Pythons flexibility](#2.-The-pros-and-cons-of-Pythons-flexibility)
+- [3. Development stages](#3.-Development-stages)
+  - [Testing a concept](#Testing-a-concept)
+  - [Proof of concept](#Proof-of-concept)
+  - [Product](#Product)
+  - [Deployment](#Deployment)
 
 ## 0. Overview of topics
 
@@ -22,7 +22,7 @@ For every standard, we have a possible classifier. The classifiers are:
 The topics are ordered by the stage where they are most useful.
 The topics cover different subjects; some are more a preference for one library over another, some are about the way you organize your code, and other are about additional tooling like dependency management and linting.
 
-| Topic                                                                            | Testing a Concept | Proof of Concept | Product | Deployment |
+| Topic                                                                            | Testing a Concept | Proof of Concept | Sharing a product | Deploying a product |
 | -------------------------------------------------------------------------------- | ----------------- | ---------------- | ------- | ---------- |
 | [never hardcode](docs/never_hardcode.md)                                   | 💡                 | 🏅                | 🏅       | 🏅          |
 | [Prefer pathlib.Path over os.path](docs/pathlib.md)                                   | 💡                 | 🏅                | 🏅       | 🏅          |
@@ -90,10 +90,10 @@ This is the stage where you are still figuring out how to solve a problem. You a
 
 This is the stage where your prototyping has showed that the solution is possible. You are now trying to figure out how to implement the solution in a more robust way. You are still learning and exploring, but you are now working in a more structured way. This might be done in a single notebook, but you could also be setting up a small project with multiple .py files.
 
-### Product
+### Sharing a Product
 
 This is the stage where you will distribute the product to other people that were not part of writing the code. Maybe you want someone to review your code, or to test your product.
 
-### Deployment
+### Deploying a product
 
 This is the stage where the code will be used in production. It is now important that the code is robust and well tested. You will be working in a team, and you will be working on a codebase that is already quite large.

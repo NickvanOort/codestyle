@@ -1,5 +1,12 @@
 ## Virtual environments
 
+# Table of Contents
+
+- [Dependency management with Rye](#Dependency-management-with-Rye)
+- [rye in practice](#rye-in-practice)
+  - [if you dont have a `.toml` file yet](#if-you-dont-have-a-%60.toml%60-file-yet)
+  - [if you already have a `.toml` file](#if-you-already-have-a-%60.toml%60-file)
+
 Now we get to a hot potato of Python: dependency management and virtual environments. Different packages and modules not only depend on different versions of Python [as explained here](version_management.md), but often also require (specific versions of) other packages. If these versions do not correspond, there is a good chance that your code will not work.
 
 This is where virtual environments and dependency management comes into play. Virtual environments are project specific. You can think of virtual environments as secluded spaces on your computer, where you can install a specific version of Python and all the packages (running on this specific Python version) you need for a specific project. Like an island with it's own specific (Python) eco-system. This way, you can have multiple projects on your computer, each with their own virtual environment, and each with their own versions of python and corresponding package versions.

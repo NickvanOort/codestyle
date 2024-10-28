@@ -1,5 +1,14 @@
 # Typehinting
 
+# Table of Contents
+
+```
+* [Basic typehinting](#Basic-typehinting)
+* [Custom types](#Custom-types)
+```
+
+- [Protocol](#Protocol)
+
 ## Basic typehinting
 
 Since python version 3.5, there is support for typehinting.
