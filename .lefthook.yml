@@ -12,4 +12,6 @@ pre-commit:
   scripts:
     "find_orphans.sh":
       runner: bash
+    "link_generator.py":
+      runner: python
 
