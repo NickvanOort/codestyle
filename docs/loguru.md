@@ -1,3 +1,9 @@
+[← Previous: Pathlib](pathlib.md) | [Next: Pydantic →](pydantic.md)
+
+# Table of Contents
+
+- [loguru](#loguru)
+
 ## loguru
 
 Often, you want to show some output of your code halfway a process.
@@ -29,3 +35,5 @@ def my_fun(x, y, z):
     # error? it's caught anyway
     return (x + y) / z
 ```
+
+[← Previous: Pathlib](pathlib.md) | [Next: Pydantic →](pydantic.md)

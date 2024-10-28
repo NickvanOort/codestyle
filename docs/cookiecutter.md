@@ -1,3 +1,5 @@
+[← Previous: Dependencies Management](dependencies_management.md) | [Next: Git Basics →](git_basics.md)
+
 # Cookiecutters
 
 # Table of Contents
@@ -58,3 +60,5 @@ On top of the cookiecutter you can do `rye init`; if you want to do that, dont u
 
 In my mind, it is not necessarily about following a structure, rigidly.
 However, especially for beginners, something like starting with a data directory and splitting that into raw, processed and final data is a good idea because it helps with maintaining a clean data, reproducible pipeline.
+
+[← Previous: Dependencies Management](dependencies_management.md) | [Next: Git Basics →](git_basics.md)

@@ -1,3 +1,5 @@
+[← Previous: Pydantic](pydantic.md) | [Next: Cookiecutter →](cookiecutter.md)
+
 ## Virtual environments
 
 # Table of Contents
@@ -123,3 +125,5 @@ You activate the environment with `source .venv/bin/activate` and deactivate it 
 
 To familiarize yourself more with rye, we encourage you watch the intro video:
 [rye](https://rye.astral.sh/guide/)
+
+[← Previous: Pydantic](pydantic.md) | [Next: Cookiecutter →](cookiecutter.md)

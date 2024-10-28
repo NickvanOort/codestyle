@@ -1,3 +1,5 @@
+[← Previous: Never Hardcode](never_hardcode.md) | [Next: Loguru →](loguru.md)
+
 Instead of using `os.path`, use `pathlib.Path`.
 see the [pathlib docs](https://docs.python.org/3/library/pathlib.html) for more information.
 
@@ -51,3 +53,5 @@ path = Path("path/to/file.txt")
 if not path.exists():
     print(f"File {path} does not exist!")
 ```
+
+[← Previous: Never Hardcode](never_hardcode.md) | [Next: Loguru →](loguru.md)

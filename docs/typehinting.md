@@ -1,3 +1,5 @@
+[← Previous: Linting](linting.md) | [Next: Add A Readme →](add_a_readme.md)
+
 # Typehinting
 
 # Table of Contents
@@ -104,3 +106,5 @@ def train_model(estimators: List[GenericModel]) -> List[GenericModel]:
 It doesnt matter how the model is implemented exactly; However, you have some minimal expectations about the methods and the arguments they receive.
 
 Read more about it in [this blog](https://www.daan.fyi/writings/python-protocols)
+
+[← Previous: Linting](linting.md) | [Next: Add A Readme →](add_a_readme.md)

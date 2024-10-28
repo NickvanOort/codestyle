@@ -1,3 +1,5 @@
+[← Previous: Typehinting](typehinting.md) | [Next: Make A Module →](make_a_module.md)
+
 If you go beyond just testing a concept for yourself, and you start to share your code with your colleagues, other students, or teacher, you need to add a README file.
 
 This file will contain information about the project, how to run the code, and what the code does. This will help the other person to understand your code and to be able to run it.
@@ -40,3 +42,5 @@ Cover things like:
 - Credits to any resources, libraries, or individuals that helped with the project
 
 Including these elements in your README file will provide a comprehensive guide for anyone looking to understand, use, or contribute to your project. Remember to keep the information clear, concise, and well-organized.
+
+[← Previous: Typehinting](typehinting.md) | [Next: Make A Module →](make_a_module.md)

@@ -1,3 +1,5 @@
+[Next: Pathlib →](pathlib.md)
+
 Beginners typically write code, that just runs now, but wont scale.
 It is understandable; you have been wrestling with errors, and are just very happy that your code sort-of works. It works now, so, "if it works do not touch it", right?
 
@@ -76,3 +78,5 @@ In contrast to the previous code, the refactored code will:
 - read the timecolumn as specified in the settings. If the column name every changes, you will have to change it at a single, central location.
 - the 'jaar' is hardcoded; you could consider to centralize this as well, but in some situations you might leave it like it is, for example you know for sure this is only going to be used one time, in this function. This depends on context, and you might still need to decide to centalize this later on.
 - you have split the code into different functions, and settings. This makes your code more robust against changes in your data etc.
+
+[Next: Pathlib →](pathlib.md)

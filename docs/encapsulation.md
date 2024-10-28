@@ -1,3 +1,5 @@
+[← Previous: Make A Module](make_a_module.md) | [Next: Open Closed →](open_closed.md)
+
 # Encapsulation
 
 # Table of Contents
@@ -224,3 +226,5 @@ class FileHandler:
     def _save_parquet(self, df: pd.DataFrame) -> None:
         df.to_parquet(self.file_path, index=False)
 ```
+
+[← Previous: Make A Module](make_a_module.md) | [Next: Open Closed →](open_closed.md)

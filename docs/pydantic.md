@@ -1,3 +1,5 @@
+[← Previous: Loguru](loguru.md) | [Next: Dependencies Management →](dependencies_management.md)
+
 # Pydantic
 
 # Table of Contents
@@ -116,3 +118,5 @@ settings1.mutable_attr.append("Hello")
 print(settings1.mutable_attr)  # prints ["Hello"]
 print(settings2.mutable_attr)  # print []
 ```
+
+[← Previous: Loguru](loguru.md) | [Next: Dependencies Management →](dependencies_management.md)

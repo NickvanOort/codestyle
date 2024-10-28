@@ -1,3 +1,5 @@
+[← Previous: Git Basics](git_basics.md) | [Next: Typehinting →](typehinting.md)
+
 # Linting
 
 # Table of Contents
@@ -78,3 +80,5 @@ While it might seem like a new source of frustration, mypy will help you to
 - make your code more readable
 
 Which are more than enough reasons to use it.
+
+[← Previous: Git Basics](git_basics.md) | [Next: Typehinting →](typehinting.md)
