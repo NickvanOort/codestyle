@@ -35,16 +35,15 @@ def add_navigation_links(
         return content
 
     nav_text = " | ".join(navigation)
+    nav_block = f"{nav_text}\n"
 
-    # Check if content already has navigation links
-    if "← Previous:" in content or "Next:" in content:
-        # Replace existing navigation
-        content = re.sub(r"\[← Previous:.*?\n", "", content)
-        content = re.sub(r"\[Next:.*?\n", "", content)
+    # Remove any existing navigation blocks at start and end
+    content = re.sub(r"^\[(?:← Previous|Next).*?\n+", "", content)  # Start of file
+    content = re.sub(r"\n+\[(?:← Previous|Next).*?$", "", content)  # End of file
+    content = content.strip()
 
-    # Add navigation at the top and bottom
-    nav_block = f"\n{nav_text}\n"
-    return f"{nav_block}\n{content.strip()}\n{nav_block}\n"
+    # Add navigation at top and bottom
+    return f"{nav_block}\n{content}\n\n{nav_block}"
 
 
 def process_documentation_files(readme_path: Path):
