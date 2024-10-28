@@ -1,17 +1,21 @@
 # Python Project Structure Guide
 
 Beginners like jupyter notebooks because of the interactivity and short feedback loops.
-However, they have a lot of downsides, too;
+However, they have a lot of downsides, too:
 
 - it's often not clear which notebooks to run in which order
 - you dont typically want to tell your client to run notebooks
 - notebooks are harder to interact with in automated way
+- notebooks add a lot of additional bloat to your system (eg installing jupyter adds over a 100 dependencies)
+- notebooks are really unpleasant to use together with git; every single time you just run them, stuff changes (like the count of how often a cell has been executed)
+- scripts are much more flexible in reusing methods / classes (eg if you define a class in a notebook, it is kind of unuseable for other notebooks / scripts)
+- notebooks make your scripts even slower (and python was already among the slowest of all programming languages...)
 
 Jupyter notebooks are a nice solution for a teaching context, but they should be left
 behind in a production context. So, at some point, you need to grow up beyond just
 notebooks and learn how to create a python module.
 
-## Basic Project Structure
+# 1. Basic Project Structure
 
 A typical Python project structure looks like this:
 
@@ -23,12 +27,33 @@ myproject/            # Project root
 |  |  |- __init__.py  # Makes the directory a Python package
 |  |  |- main.py      # Main application code
 |  |  |- utils.py     # Additional modules
-|- tests/             # Test files
 |- README.md          # Project documentation
 |- pyproject.toml     # Project dependencies
 ```
 
-## Key Components
+There are a lot of tools to manage this. A short overview is this image:
+![](venn_diagram_rye.png)
+
+You can find more background in the [blog](https://alpopkes.com/posts/python/packaging_tools/) where I found this image.
+What stands out, is how much different tools there are. In my eyes, this is kind of a sad state of the python ecosystem.
+Most modern languages include tooling to 
+- manage environments and dependencies
+- manage versions of your language
+- publish and build packages
+
+The fact that python has many different systems, is really not helpful; you will find a lot people that
+have been using `pip` all of their life and just don't like this fancy new package you are talking about, 
+because "pip just works". Sometimes they are convinced when I explain that `rye` is 10-100x faster than their beloved
+`pip`, but sometimes their workflow is so rigid they they dont want to adopt it.
+
+This means that working together in a python project often means that you need to discuss the tooling first.
+
+In my opinion, `rye` is the absolute winner:
+- the quality of the project is really high
+- there is just one tool; you dont need both pyenv to manage your python version, pdm to manage dependencies and setuptools to build your package. `rye` is you one-stop shop.
+- If you are the kind of person that picks the longest line in the supermarket, suit yourself, but I have better things to do than waiting for my tools the fix the dependency tree. If you dont consider a 10-100x speedup as a relevant variable in picking your toolbox, I doubt your rational decision making capabilities...
+
+## 1.1 Key Components
 
 ### `__init__.py`
 
@@ -39,95 +64,59 @@ This file makes a directory a Python package. It can be empty or explicitly decl
 from mymodule.main import some_function
 
 # Explicitly declare public API
-__version__ = "0.1.0"
+__version__ = "0.1.0" # now people can run mymodule.__version__ to check the version
 ```
 
-## pyproject.toml
+### pyproject.toml
 
-Modern Python projects use pyproject.toml (PEP 621) for project metadata and build configuration:
+Modern Python projects use pyproject.toml [PEP 631](https://peps.python.org/pep-0631/) for project metadata and build configuration:
 
 ```toml
 [project]
 name = "mymodule"
 version = "0.1.0"
 description = "My Python module"
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 dependencies = [
-    "requests>=2.28.0",
+    "requests>=3.38.0",
 ]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/mymodule"]
+
 [project.scripts]
 mymodule = "mymodule.main:main"
 ```
 
-When you add this to your `pyproject.toml`:
+# 2. Inside your scripts
 
-```toml
-[project.scripts]
-mymodule = "mymodule.main:main"
-```
-
-This creates a command-line script that you can run from anywhere. Let's break down how it works:
-
-```
-mymodule        = "mymodule.main:main"
-^                 ^        ^     ^
-|                 |        |     |
-Command name      Module   File  Function
-```
-
-- Left side (mymodule): The command name you'll type in your terminal
-- Right side ("mymodule.main:main"): Where to find the code to run
-- Before the colon: Python import path to the file
-- After the colon: Function name to call
-
-## How to Use It
-
-First, install your package:
-`pip install -e .` or, with rye, doing `rye sync` install your package.
-Now you can run your code by just typing:
-`mymodule`
-
-## Multiple Scripts
-
-You can define multiple entry points:
-
-```toml
-[project.scripts]
-mymodule = "mymodule.main:main"
-mymodule-init = "mymodule.commands:initialize"
-mymodule-cleanup = "mymodule.commands:cleanup"
-```
-
-## main.py
-
-Main application logic with a clear entry point:
+## 2.1 the `__name__ == "__main__"` idom
+This is a piece of code that you can add to your scripts:
 
 ```python
 # src/mymodule/main.py
 def main():
-    print("Running main function")
+    print("Hello World")
 
 if __name__ == '__main__':
     main()
 ```
-
-What Does This Do?
 When Python runs a file, it sets special variables. One of them is __name__:
 
-When you run the file directly: __name__ = '__main__'
-When you import the file: __name__ = the module's name
+- When you run the file directly (see section 3): __name__ = '__main__'
+- When you import the file: __name__ = the module's name
 
-This means that if you have control over what should be done if you run it directly,
-versus what happens when you just import.
+Having a section like `if __name__ == "__main___"` gives you control over what parts of the code to run, when.
+You might want to test parts of the code by running a script directly. But you dont want to run
+all these functions when you import from the file. This snippet gives you the option what to
+run when calling the script directly.
 
-# Importing Between Files
-
-## Best Practice Imports
+## 2.2 Importing Between Files
+### Best Practice Imports
 
 ```python
 # Absolute import (preferred over relative)
@@ -142,44 +131,15 @@ from src.mymodule.constants import (
     MAX_RETRIES,
 )
 ```
+### Common Issues and Solutions
 
-# Running Your Code
-
-## Method 1: Direct Python Execution
-
-Run this command from your terminal, from the root of your project.
-
-```bash
-# From project root
-python src/mymodule/main.py
-```
-
-DON'T do this - will cause import issues
-
-```bash
-cd src/mymodule
-python main.py  # This breaks imports!
-```
-
-## Method 2: Module Mode (-m flag)
-
-```bash
-# From project root
-python -m src.mymodule.main
-```
-
-The -m flag treats the path as a module path, not a file path. This helps Python correctly resolve imports.
-
-# Common Issues and Solutions
-
-## 1. Import Errors
+Beginning users often encounter import errors:
 
 ```bash
 Error: ModuleNotFoundError: No module named 'src'
 ```
 
-## Common causes:
-
+Common causes:
 - Running from wrong directory
 - Missing __init__.py files
 - Module not installed or not in Python path
@@ -188,14 +148,79 @@ Error: ModuleNotFoundError: No module named 'src'
 Solutions:
 
 ```bash
-# Always run from project root
-cd /path/to/myproject
-source .venv/bin/activate
+cd /path/to/myproject # Always run from project root
+source .venv/bin/activate # make sure your .venv is activated
+python -m src.mymodule.main # only if you havent built the package; see section `building your project`
+```
+
+# 3. running your code
+## 3.1 running as a script
+
+When you add this to your `pyproject.toml`:
+
+```toml
+[project.scripts]
+mymodule = "mymodule.main:main"
+```
+After you build your project, this will create a command-line script that you can run from anywhere. Let's break down how it works:
+
+```
+mymodule        = "mymodule.main:main"
+^                 ^        ^     ^
+|                 |        |     |
+Command name      Module   File  Function
+```
+
+- Left side (mymodule): The command name you'll type in your terminal
+- Right side ("mymodule.main:main"): Where to find the code to run
+- Before the colon: Python import path to the file
+- After the colon: Function name to call
+
+To use it, first, install your package:
+- using pip: `pip install -e .`
+- using rye: `rye sync`
+
+this will add your module to your .venv. 
+Now you can run your code by just typing in the terminal:
+`mymodule`. See also 'building your project'
+
+## 3.2 Multiple Scripts
+
+You can define multiple entry points:
+
+```toml
+[project.scripts]
+mymodule = "mymodule.main:main"
+mymodule-init = "mymodule.commands:initialize"
+mymodule-cleanup = "mymodule.commands:cleanup"
+```
+
+## 3.3 Direct Python execution
+Run this command from your terminal, from the root of your project.
+
+```bash
+# From project root
+python src/mymodule/main.py
+```
+
+> 🗒️ **NOTE:** DON'T do this - will cause import issues
+>
+>```bash
+>cd src/mymodule
+>python main.py  # This breaks imports!
+>```
+
+## 3.4 Module Mode execution (-m flag)
+
+The -m flag treats the path as a module path, not a file path. 
+```bash
+# From project root
 python -m src.mymodule.main
 ```
 
-## 2. Virtual Environment Setup
+# 4. Environment Setup
 
+## 4.1 install a venv
 Creating a venv with vanilla Python:
 
 ```bash
@@ -208,18 +233,20 @@ python -m venv .venv
 # Unix/MacOS
 source .venv/bin/activate
 ```
+I will use this if I want to minimize dependencies and adding rye isnt strictly necessary.
+And example would be, inside a Docker container. 
+However, sometimes I do use rye inside a container, because I really want the speedup that rye (which uses uv) gives me; it's about [10-100x faster then pip](https://docs.astral.sh/uv/)...
 
-or with rye:
-
+Instead of using base python, we can use rye:
 ```bash
-rye init myproject # creates folder structure
+rye init myproject # creates folder structure plus pyproject.toml file
 cd myproject
 rye sync  # syncs pyproject.toml file with .venv , activates .venv
 ```
 
-# Project Examples
+## 4.2 Project Examples
 
-## simple script
+### simple script
 
 ```
 project/
@@ -229,7 +256,10 @@ project/
 |- pyproject.toml
 ```
 
-## Basic Package
+This works, but is often a bad idea; your module is now named `src`, which is not very informative.
+So, it is often preferred to use the basic package setup:
+
+### Basic Package
 
 ```
 project/
@@ -242,7 +272,11 @@ project/
 |- pyproject.toml
 ```
 
-## Full Application
+By adding an additional directory, everyone will still know where to find your code (in the
+src folder) but your module will also get a descriptive name, and if you install it you can 
+do `import mypackage` instead of `import src`.
+
+### Full Application
 
 ```
 project/
@@ -260,3 +294,115 @@ project/
 |- README.md
 |- pyproject.toml
 ```
+
+This mainly adds additional directories for tests and utils. The tests directory is used to
+automatically run tests using a test runner like pytest. The utils directory is used to 
+organize your code into smaller submmodules, and you can import it like this:
+`from src.mymodule.utils import helper_function` or, if you have installed your module in your env, 
+`from mymodule.utils import helper_function`.
+
+# 5. Building your project
+## 5.1 the pyproject.toml build-system
+
+This part of the toml file:
+```toml
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+```
+defines your backend. `rye` uses `hatch` by default; other options are setuptools and pdm.
+
+[Hatch](https://github.com/pypa/hatch) is not part of base Python - it's a modern build tool that:
+1. Has better dependency resolution than setuptools
+3. Includes environment management
+3. Has simpler configuration
+4. Includes development tools (formatting, testing, etc.)
+5. Has better reproducible builds
+
+You can find more documentation on the [website](https://hatch.pypa.io/latest/) of the project.
+The build-system part of the code works together with 
+```toml
+[project]
+name = "mymodule"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mymodule"]
+```
+
+## 5.2 installing your project
+when building a module. You can do this with native but slow `pip` like this:
+`pip install -e .`
+or, when you use the faster `rye`, with `rye sync`.
+
+This command will install your module into your active .venv and after this is succesful you should be able to:
+
+- go into your `.venv/lib/python/site-packages` and check to see `mymodule` installed 
+- you can activate your `.venv`, start python (by typing `python` in your terminal) and, because the mymodule is there,
+and assuming you have a function `hi()` in your `main.py` file, do:
+```python
+>>> from mymodule.main import hi
+>>> hi()
+hello!
+```
+Note how you can remove the src from your import.
+
+## 5.3 bulding your project
+Using `pip install` or `rye sync` puts your code in your python environment, just like other packages you `pip install` or `rye add`.
+This makes your own code importable. However, you can go one step further and actually build a package.
+The easiest way to do this is, is with rye.
+
+```bash
+rye build # build a wheel and a zip of your code
+rye build --wheel # builds just the wheel
+```
+
+which will result in this:
+```
+dist/
+|- myproject-0.1.0-py3-none-any.whl   # Wheel file
+```
+
+### What is a .whl (Wheel) File?
+- A wheel is a pre-built package format
+- Contains your code, ready to install
+- Like a zip file with a special structure
+- Faster to install than source code
+- Platform-specific if it contains compiled code
+
+The advantages are that you or your colleague can now do this:
+
+```bash
+# Save wheels for offline use
+cp dist/myproject-0.1.0-py3-none-any.whl ~/my-wheels/
+
+# Install later
+pip install ~/my-wheels/myproject-0.1.0-py3-none-any.whl
+
+# Or from a network location
+pip install /mnt/shared/wheels/myproject-0.1.0-py3-none-any.whl
+```
+### gotchas with building
+setting your `name` is actually relevant:
+
+```
+src/
+|- coolproject/  # Directory name
+|- pyproject.toml  # name = "myproject"
+```
+and installing this project will result in
+```python
+import myproject  # Error! Python looks for myproject/ but finds coolproject/
+```
+## 5.4 publishing your project
+One-time Setup
+
+- Create account on PyPI (https://pypi.org)
+- Get API token from PyPI
+
+Now you can first `build` and then publish your wheel with:
+```bash
+rye publish --token $YOUR_TOKEN 
+```
+Note that this makes your code available to everyone with an internet connection!
+
+
