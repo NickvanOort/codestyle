@@ -34,7 +34,7 @@ The topics cover different subjects; some are more a preference for one library 
 | [Use formatters and linting](docs/linting.md)                                         | 💡                 | 🏅                | 🏅       | 🏅          |
 | [Use typehinting](docs/typehinting.md)                                                | 🐌                 | 💡                | 🏅       | 🏅          |
 | [Add a README](docs/add_a_readme.md)                                     | 🐌                 | 💡                | 🏅       | 🏅          |
-| [Move away from jupyter](docs/make_a_module.md)                                     | 🐌                 | 💡                | 🏅       | 🏅          |
+| [Make a proper module](docs/make_a_module.md)                                     | 🐌                 | 💡                | 🏅       | 🏅          |
 | [Encapsulation, SRP](docs/encapsulation.md)                                                                    | 🐌                 | 💡                | 🏅       | 🏅          |
 | [Open-Closed Principle](docs/open_closed.md)                                                            | 🐌                 | 💡                | 🏅       | 🏅          |
 | Makefiles or shell scripts                                     | 🐌                 | 💡                | 🏅       | 🏅          |
