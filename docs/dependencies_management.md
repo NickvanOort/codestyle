@@ -40,6 +40,18 @@ You need to activate the virtual environment to work within it.
 source .venv/bin/activate
 ```
 
+Activating an environment on Windows works slightly different:
+
+```bash
+.\.venv\Scripts\activate
+```
+
+Or, with PowerShell:
+
+```bash
+.\.venv\Scripts\Activate.ps1
+```
+
 Once activated, you'll see the virtual environment's name in your command prompt, indicating that you are now working within the virtual environment.
 With the virtual environment activated, you can use pythons native `pip` to install packages and dependencies. For example, to install a package named example-package, use:
 
@@ -122,6 +134,23 @@ In both cases rye will create a `.venv` folder in your project root directory, w
 The folder created (eg `.venv`) is where your virtual environment for your project "resides". Don't worry about this for now. Just remember that this is where your project's Python version and packages are stored, and that it is a folder like every other folder so you can look around inside it. Vscode can help you locate code you import from your environment by right-clicking and selecting `Go to Definiton`.
 
 You activate the environment with `source .venv/bin/activate` and deactivate it with `deactivate`. For windows, use `source .venv/Scripts/activate` and `deactivate` respectively.
+
+After this, you can
+
+```bash
+python script.py
+```
+
+To execute `script.py`.
+
+An alternative is to do
+
+```bash
+rye run python script.py
+```
+
+When you want to run `script.py`
+`rye run` will activate your .venv, and `python script.py` will run the script.
 
 To familiarize yourself more with rye, we encourage you watch the intro video:
 [rye](https://rye.astral.sh/guide/)
