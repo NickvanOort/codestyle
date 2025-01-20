@@ -81,6 +81,8 @@ because "pip just works". This means that working together in a python project o
 However, sane people are convinced when I explain that `uv` is 10-100x faster than their beloved
 `pip`.
 
+![](uv.png)
+
 In my opinion, `uv` is the absolute winner:
 
 - previous, `rye` and `uv` where separate projects. However, `uv` and `rye` have merged their projects. This means that `uv` does everything `rye` did.

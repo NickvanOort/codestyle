@@ -85,6 +85,8 @@ Don't worry if you do not understand all the variables defined in the `pyproject
 
 **The dependencies of your project specified in `pyproject.toml` are automatically installed when you run `uv sync`. This is another reason why we chose uv**, as it is a big improvement over `pip` or `conda`. These require you to manually specify and update the dependencies in a `requirements.txt` file. This file is not automatically updated when you install new packages. A recipe for disaster, as it is very easy to forget to update the `requirements.txt` file and can be become extremely hard to detect conflicts.
 
+![](uv.png)
+
 #### 3. uv automatically handles dependencies
 
 uv can do this automatically, because it uses the `uv.lock` file to store the exact versions of the packages you install and all the correct versions of the dependencies that these packages require. Most (practically all) packages require other packages to function. They all depend (on the right version) of each other (hence the name `dependency management`).
