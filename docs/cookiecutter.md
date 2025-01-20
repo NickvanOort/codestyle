@@ -27,7 +27,7 @@ Some of their guidelines are:
 - build from the environment up (i prefer `uv`, see
 - adapt from a consistent default
 
-If some of these dont seem clear, I invite you to follow the [link]](https://drivendata.github.io/cookiecutter-data-science/) and read more details.
+If some of these dont seem clear, I invite you to follow the [link](https://drivendata.github.io/cookiecutter-data-science/) and read more details.
 
 Their project translates these guidelines into what is called a cookiecutter: a default template with a folder structure and some basic files.
 While you could use their setup, it turns out that even templates are highly personal. `uv` has different commands to initialize a project, just run `uv init --help` to get an overview of the different templates.
