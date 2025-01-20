@@ -11,7 +11,7 @@
 
 ## Motivation
 
-The text below is copied from [cookiecutter-data-science](https://drivendata.github.io/cookiecutter-data-science/) and is an excellent motivation for why we want to organize our code, especially in data science projects:
+The text below is copied from [cookiecutter-data-science](https://cookiecutter-data-science.drivendata.org/opinions/) and is an excellent motivation for why we want to organize our code, especially in data science projects:
 
 > The most important features of a quality data analysis are correctness and reproducibility—anyone should be able to re-run your analysis using only your code and raw data and produce the same final products. The best way to ensure correctness is to test your analysis code. The best way to ensure reproducibility is to treat your data analysis pipeline as a directed acyclic graph (DAG). This means each step of your analysis is a node in a directed graph with no loops. You can run through the graph forwards to recreate any analysis output, or you can trace backwards from an output to examine the combination of code and data that created it.
 
