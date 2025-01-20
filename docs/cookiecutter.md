@@ -1,64 +1,76 @@
-[← Previous: Dependencies Management](dependencies_management.md) | [Next: Git Basics →](git_basics.md)
-
-# Cookiecutters
+[← Previous: Dependencies Management](dependencies_management.md) | [Next: Add A Readme →](add_a_readme.md)
 
 # Table of Contents
 
-- [Motivation](#Motivation)
-- [Using a cookiecutter](#Using-a-cookiecutter)
+- [Organize your folders](#Organize-your-folders)
+  - [Motivation](#Motivation)
+  - [Datafolder](#Datafolder)
+  - [notebooks vs source code](#notebooks-vs-source-code)
+
+# Organize your folders
 
 ## Motivation
 
-The text below is copied from [cookiecutter-data-science](https://drivendata.github.io/cookiecutter-data-science/) and is an excellent introduction in datascience cookiecutters:
+The text below is copied from [cookiecutter-data-science](https://drivendata.github.io/cookiecutter-data-science/) and is an excellent motivation for why we want to organize our code, especially in data science projects:
 
-When we think about data analysis, we often think just about the resulting reports, insights, or visualizations. While these end products are generally the main event, it's easy to focus on making the products look nice and ignore the quality of the code that generates them. Because these end products are created programmatically, code quality is still important! And we're not talking about bikeshedding the indentation aesthetics or pedantic formatting standards — ultimately, data science code quality is about correctness and reproducibility.
+> The most important features of a quality data analysis are correctness and reproducibility—anyone should be able to re-run your analysis using only your code and raw data and produce the same final products. The best way to ensure correctness is to test your analysis code. The best way to ensure reproducibility is to treat your data analysis pipeline as a directed acyclic graph (DAG). This means each step of your analysis is a node in a directed graph with no loops. You can run through the graph forwards to recreate any analysis output, or you can trace backwards from an output to examine the combination of code and data that created it.
 
-It's no secret that good analyses are often the result of very scattershot and serendipitous explorations. Tentative experiments and rapidly testing approaches that might not work out are all part of the process for getting to the good stuff, and there is no magic bullet to turn data exploration into a simple, linear progression.
+You want your code to be reproducable; that is the `science` part of `data science`: you create hypotheses and set up repeatable experiments to confirm or deny them.
 
-That being said, once started it is not a process that lends itself to thinking carefully about the structure of your code or project layout, so it's best to start with a clean, logical structure and stick to it throughout. We think it's a pretty big win all around to use a fairly standardized setup like this one. Here's why:
+Some of their guidelines are:
 
-> **Other people will thank you**
-> *Nobody sits around before creating a new Rails project to figure out where they want to put their views; they just run `rails new` to get a standard project skeleton like everybody else.*
+- raw data is immutable
+- data should not be kept in source control
+- notebooks are for exploration, source files for repetition
+- refactor the good parts into source code
+- keep your modeling / visualisations organized
+- build from the environment up (i prefer `uv`, see
+- adapt from a consistent default
 
-A well-defined, standard project structure means that a newcomer can begin to understand an analysis without digging in to extensive documentation. It also means that they don't necessarily have to read 100% of the code before knowing where to look for very specific things.
+If some of these dont seem clear, I invite you to follow the link a read more details.
 
-## Using a cookiecutter
+Their project translates these guidelines into what is called a cookiecutter: a default template with a folder structure and some basic files.
+While you could use their setup, it turns out that even templates are highly personal. `uv` has different commands to initialize a project, just run `uv init --help` to get an overview of the different templates.
 
-The mentioned cookiecutter-data-science project provides a nice cookiecutter.
-However, it is also very extensive, have a look at their website if you are interested.
-For example, they add libraries for generating documentation, and some boilerplate code for
-passing on arguments with the `click` library. While this are nice additions, for our lessons it is
-typically not needed.
+While there is some flexibility, a well-defined, standard project structure means that a newcomer can begin to understand an analysis without digging in to extensive documentation. It also means that they don't necessarily have to read 100% of the code before knowing where to look for very specific things.
 
-Thats why I created my own version of a cookiecutter.
-You can find it on pypi [here](https://pypi.org/project/datascience-cookiecutter/).
-This means you can easily install it with `rye add datascience-cookiecutter` (or, of course,
-`pip install datascience-cookiecutter` if you want to).
+This general structure should have these components:
 
-There is a default template that looks like this:
+## Datafolder
+
+Add a specific datafolder. You can do that like this
 
 ```markdown
 ├── data/
-│   ├── processed
 │   ├── raw
+│   └── processed
+```
+
+Such that you clearly separate unprocessed and processed data.
+
+Another common approach looks like this:
+
+```markdown
+├── data/
+│   ├── assets
+│   └── artefacts
+```
+
+Which is inspired by the `design science` methodology: `assets` is data you get, the `artefacts` are the output of your process.
+
+## notebooks vs source code
+
+Separate your code into the exploration phase where you use notebooks, and a consolidation phase where you have moved the good parts of the exploration from a notebook or script into source code. A convention is to use a `dev` folder (for the developer) for exploration and communication, and a `src` folder for source code, which will form a proper module.
+
+```markdown
 ├── dev/
-|    ├── notebooks
-│    └── scripts
+|   ├── notebooks
+│   └── scripts
 ├── src/
 │   ├── __init__.py
 │   └── main.py
-├── tests/
-│   ├── __init__.py
-│   └── main.py
-├── references/
-├── Makefile
-├── README.md
 ```
 
-If you dont like parts of it, you can customize the template, read the documentation if you want to know how.
-On top of the cookiecutter you can do `rye init`; if you want to do that, dont use the pyproject.toml from the cookiecutter but let that be generated by rye.
+More info about setting up your project can be found in [make a module](make_a_module.md)
 
-In my mind, it is not necessarily about following a structure, rigidly.
-However, especially for beginners, something like starting with a data directory and splitting that into raw, processed and final data is a good idea because it helps with maintaining a clean data, reproducible pipeline.
-
-[← Previous: Dependencies Management](dependencies_management.md) | [Next: Git Basics →](git_basics.md)
+[← Previous: Dependencies Management](dependencies_management.md) | [Next: Add A Readme →](add_a_readme.md)

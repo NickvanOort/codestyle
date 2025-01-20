@@ -1,12 +1,13 @@
-[← Previous: Loguru](loguru.md) | [Next: Dependencies Management →](dependencies_management.md)
-
-# Pydantic
+[← Previous: Add A Readme](add_a_readme.md) | [Next: Git Basics →](git_basics.md)
 
 # Table of Contents
 
-- [Creating configuration settings](#Creating-configuration-settings)
-- [field validators](#field-validators)
-- [Mutable attributes](#Mutable-attributes)
+- [Isolate your settings](#Isolate-your-settings)
+  - [Creating configuration settings](#Creating-configuration-settings)
+  - [field validators](#field-validators)
+  - [Mutable attributes](#Mutable-attributes)
+
+# Isolate your settings
 
 While creating larger projects, we will typically end up having a lot of parameters. While the fastest way might seem to just hardcode them somewhere, this is not a valid long-term strategy.
 
@@ -14,7 +15,7 @@ Especially when doing experiments with machine learning, we will want to have ev
 
 ## Creating configuration settings
 
-To start naively, we could just make a config like this
+To start, we could just make a config like this
 
 ```python
 config = {"input_size": 3, "output_size": 20, "data_dir": "."}
@@ -22,7 +23,7 @@ config = {"input_size": 3, "output_size": 20, "data_dir": "."}
 
 While this will work perfectly fine if you are prototyping, at some point your project will grow bigger and you will want to have more control over your parameters.
 
-A basic way to improve upon the dict is to use a dataclass;
+Therefore, a more solid way to improve upon the simple dict is to use a dataclass;
 
 ```python
 from dataclasses import dataclass
@@ -35,7 +36,7 @@ class SearchSpace:
     data_dir: Path
 ```
 
-This will create a class with the parameters you need. However, it does not provide any checks on the parameters. You could create `Searchspace.input_size = "hi"` and python won't complain. While it is better than the dict, because it gives you more control over the items inside the object, you can have stricter checks by using pydantic:
+This will create a class with the parameters you need. In addition, it adds typehints, which can be checked by your linter (eg myy or pyright). However, it does not provide automatic checks on the parameters at creation time. You could still create `Searchspace.input_size = "hi"` and python won't complain. While it is better than the dict, because it gives you more control over the items inside the object, you can have stricter checks by using pydantic:
 
 Pydantic helps with a lot of things. First of all, it will help you to define the types of your parameters. This will help you to catch bugs early on!
 At the moment the wrong type is passed, pydantic will first try to convert it to the correct type. If this fails, it will raise an error.
@@ -119,4 +120,4 @@ print(settings1.mutable_attr)  # prints ["Hello"]
 print(settings2.mutable_attr)  # print []
 ```
 
-[← Previous: Loguru](loguru.md) | [Next: Dependencies Management →](dependencies_management.md)
+[← Previous: Add A Readme](add_a_readme.md) | [Next: Git Basics →](git_basics.md)

@@ -1,12 +1,10 @@
-# The many faces of Path
+There are few topics that seem to cause so much confusion as paths for beginners. This is probably because there are a lot of different situations where we refer to things as "paths", and they all have their own quirks.
 
 # Table of Contents
 
 - [The PATH environment variable](#The-PATH-environment-variable)
 - [PYTHONPATH](#PYTHONPATH)
 - [Paths as in Filepaths](#Paths-as-in-Filepaths)
-
-There are few topics that seem to cause so much confusion as paths for beginners. This is probably because there are a lot of different situations where we refer to things as "paths", and they all have their own quirks.
 
 # The PATH environment variable
 
@@ -33,7 +31,7 @@ These are all different locations where your terminal looks for executable comma
 
 # PYTHONPATH
 
-There is also something that is called  `PYTHONPATH`. Instead of being a list of global directories where to find executables, `PYTHONPATH` is a Python specific list of directories in wich Python will search for Python modules and packages. When you install `numpy` and use it in your code, how does Python know when you run your code where to find the correct version of `numpy`? It will look in all the directories in `PYTHONPATH`.
+There is also something that is called `PYTHONPATH`. Instead of being a list of global directories where to find executables, `PYTHONPATH` is a Python specific list of directories in wich Python will search for Python modules and packages. When you install `numpy` and use it in your code, how does Python know when you run your code where to find the correct version of `numpy`? It will look in all the directories in `PYTHONPATH`.
 
 VScode will help you by adding the directory of your current project to `PYTHONPATH`. It will also detect folders like .venv that typically contain virtual environments. But if you are not using VScode, you will have to think about how these locations are added. More on virtual environments (.venv), dependencies and package management in the next section.
 

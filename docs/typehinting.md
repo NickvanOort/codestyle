@@ -1,13 +1,13 @@
-[← Previous: Linting](linting.md) | [Next: Add A Readme →](add_a_readme.md)
-
-# Typehinting
+[← Previous: Loguru](loguru.md) | [Next: Make A Module →](make_a_module.md)
 
 # Table of Contents
 
-```
-* [Basic typehinting](#Basic-typehinting)
-* [Custom types](#Custom-types)
-```
+- [Typehinting](#Typehinting)
+  - [Basic typehinting](#Basic-typehinting)
+  - [Custom types](#Custom-types)
+- [Protocol](#Protocol)
+
+# Typehinting
 
 - [Protocol](#Protocol)
 
@@ -56,7 +56,7 @@ A sentence could be a list of words, so it might look like this:
 sentence = ["This", "is", "a", "sentence"]
 ```
 
-This will be typehinted as `List[str]`.  However, your sentence might still be a `List[str]` but it could look like this:
+This will be typehinted as `List[str]`. However, your sentence might still be a `List[str]` but it could look like this:
 
 ```python
 sentence = ["This is a sentence"]
@@ -107,4 +107,4 @@ It doesnt matter how the model is implemented exactly; However, you have some mi
 
 Read more about it in [this blog](https://www.daan.fyi/writings/python-protocols)
 
-[← Previous: Linting](linting.md) | [Next: Add A Readme →](add_a_readme.md)
+[← Previous: Loguru](loguru.md) | [Next: Make A Module →](make_a_module.md)

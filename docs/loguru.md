@@ -1,4 +1,4 @@
-[← Previous: Pathlib](pathlib.md) | [Next: Pydantic →](pydantic.md)
+[← Previous: Linting](linting.md) | [Next: Typehinting →](typehinting.md)
 
 # Table of Contents
 
@@ -36,4 +36,4 @@ def my_fun(x, y, z):
     return (x + y) / z
 ```
 
-[← Previous: Pathlib](pathlib.md) | [Next: Pydantic →](pydantic.md)
+[← Previous: Linting](linting.md) | [Next: Typehinting →](typehinting.md)

@@ -1,6 +1,4 @@
-[← Previous: Cookiecutter](cookiecutter.md) | [Next: Linting →](linting.md)
-
-## Intoduction
+[← Previous: Pydantic](pydantic.md) | [Next: Linting →](linting.md)
 
 # Table of Contents
 
@@ -31,7 +29,7 @@ Git has some basic commands, some of wich were covered in the video. Using git t
 
 ## Git through VS Code
 
-Instead of the command line u can also use the GUI in VSCode to to work with  Git. The GUI in VSCode has some advantages over using the command line, especially if you are if you use add ons like [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) or [GitGraph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph).
+Instead of the command line u can also use the GUI in VSCode to to work with Git. The GUI in VSCode has some advantages over using the command line, especially if you are if you use add ons like [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) or [GitGraph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph).
 
 Every action you can perform in the GUI of VS Code , is essentially one or more git commands. So we recommend that you first learn how to use git through the command line, and then gradually start using the GUI's of VSCode and it's add ons. Ensuring that you inderstand wich actions in the git workflow you are performing when you press a button in the GUI.
 
@@ -47,4 +45,4 @@ From the tutorials above, you got a taste of how a git workflow looks like. Ther
 
 If you are interested in learning more about the more complex GitFlow, you can check out this [very short video on its structure](https://www.youtube.com/watch?v=1SXpE08hvGs&ab_channel=TraversyMedia). For a simple and accessible comparison of different implementations of GitFlow, check out [this short video](https://www.youtube.com/watch?v=7lgGEXpsflI).
 
-[← Previous: Cookiecutter](cookiecutter.md) | [Next: Linting →](linting.md)
+[← Previous: Pydantic](pydantic.md) | [Next: Linting →](linting.md)

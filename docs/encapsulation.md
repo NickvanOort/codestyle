@@ -1,9 +1,8 @@
-[← Previous: Make A Module](make_a_module.md) | [Next: Open Closed →](open_closed.md)
-
-# Encapsulation
+[← Previous: Open Closed](open_closed.md)
 
 # Table of Contents
 
+- [Encapsulation](#Encapsulation)
 - [Single Responsibility Principle in Our Code Examples](#Single-Responsibility-Principle-in-Our-Code-Examples)
   - [Benefits of Adhering to SRP](#Benefits-of-Adhering-to-SRP)
   - [FileHandler Class](#FileHandler-Class)
@@ -12,6 +11,8 @@
   - [Config Dataclass](#Config-Dataclass)
   - [Practical Implications](#Practical-Implications)
 - [Trade off (or, when to stop)](<#Trade-off-(or,-when-to-stop)>)
+
+# Encapsulation
 
 Encapsulation is one of the fundamental principles of object-oriented programming (OOP). It refers to the bundling of data and the methods that operate on that data within a single unit or object. This principle provides several important benefits in software design and development:
 
@@ -227,4 +228,4 @@ class FileHandler:
         df.to_parquet(self.file_path, index=False)
 ```
 
-[← Previous: Make A Module](make_a_module.md) | [Next: Open Closed →](open_closed.md)
+[← Previous: Open Closed](open_closed.md)

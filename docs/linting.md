@@ -1,18 +1,19 @@
-[← Previous: Git Basics](git_basics.md) | [Next: Typehinting →](typehinting.md)
-
-# Linting
+[← Previous: Git Basics](git_basics.md) | [Next: Loguru →](loguru.md)
 
 # Table of Contents
 
+- [Linting](#Linting)
 - [Formatters](#Formatters)
 - [Type checkers](#Type-checkers)
+
+# Linting
 
 By default, I will install the following libraries for linting:
 
 - `black`
 - `ruff`
 - `isort`
-- `mypy`
+- `mypy` or `pyright`
 
 And I will create a `Makefile` with this template:
 
@@ -24,8 +25,8 @@ format:
         black src
 
 lint:
-        ruff src
-        mypy src
+        ruff check src --fix
+        pyright src
 ```
 
 This will allow you to run `make format` from the terminal to format your code, and `make lint` to lint your code.
@@ -54,7 +55,7 @@ issues that ruff will catch.
 However, some checks are too tight or conflicting (eg black limits line length to 88 (or some other standard you pick), so ruff needs to know about that), which is where the `pyproject.toml` configuration file comes in.
 Have a look at the pyproject.toml file in this repo for an example, check the `tool.ruff` and `tool.black` sections.
 
-After you added proper typehinting everywhere, `mypy` will start checking consistency.
+After you added proper typehinting everywhere, `mypy` will start checking consistency. `pyright` is another libarary that does the same, but has different default settings. To learn typehinting, `mypy` is a better choice with the out-of-the-box settings.
 
 Imagine you have a function that retrieves the median of a list of customers,
 and it is important that the customers are discrete counts, and thus an integer.
@@ -81,4 +82,4 @@ While it might seem like a new source of frustration, mypy will help you to
 
 Which are more than enough reasons to use it.
 
-[← Previous: Git Basics](git_basics.md) | [Next: Typehinting →](typehinting.md)
+[← Previous: Git Basics](git_basics.md) | [Next: Loguru →](loguru.md)

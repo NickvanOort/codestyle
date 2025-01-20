@@ -1,3 +1,5 @@
+[← Previous: Cookiecutter](cookiecutter.md) | [Next: Pydantic →](pydantic.md)
+
 The README file will contain information about the project, how to run the code, and what the code does. This will help others to understand your code and to be able to run it.
 However, that other can also be yourself in 6 months time; that means it is a good idea to start your project with a README and use it to write down instructions and notes about your project.
 
@@ -39,3 +41,5 @@ Cover things like:
 - Credits to any resources, libraries, or individuals that helped with the project
 
 Including these elements in your README file will provide a comprehensive guide for anyone looking to understand, use, or contribute to your project. Remember to keep the information clear, concise, and well-organized.
+
+[← Previous: Cookiecutter](cookiecutter.md) | [Next: Pydantic →](pydantic.md)

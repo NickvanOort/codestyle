@@ -1,4 +1,4 @@
-[← Previous: Encapsulation](encapsulation.md)
+[← Previous: Make A Module](make_a_module.md) | [Next: Encapsulation →](encapsulation.md)
 
 # Code Walkthrough: Demonstrating the Open-Closed Principle (OCP)
 
@@ -168,4 +168,4 @@ Finally, the main block of the script demonstrates how to use the `AnnotatedPlot
 - **img_folder**: We create a folder to store the plots if it doesn't already exist.
 - **AnnotatedPlot**: We instantiate `AnnotatedPlot` and add different annotations in steps, showing how we can easily extend the functionality without modifying the existing code. This is a nice illustration of the **Open-Closed Principle** in action.
 
-[← Previous: Encapsulation](encapsulation.md)
+[← Previous: Make A Module](make_a_module.md) | [Next: Encapsulation →](encapsulation.md)

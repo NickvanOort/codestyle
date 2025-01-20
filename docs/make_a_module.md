@@ -1,4 +1,4 @@
-[← Previous: Add A Readme](add_a_readme.md) | [Next: Encapsulation →](encapsulation.md)
+[← Previous: Typehinting](typehinting.md) | [Next: Open Closed →](open_closed.md)
 
 # Table of Contents
 
@@ -77,15 +77,15 @@ Most modern languages include tooling to
 
 The fact that python has many different systems, is really not helpful; you will find a lot people that
 have been using `pip` all of their life and just don't like this fancy new package you are talking about,
-because "pip just works". Sometimes they are convinced when I explain that `rye` is 10-100x faster than their beloved
-`pip`, but sometimes their workflow is so rigid they they dont want to adopt it.
+because "pip just works". This means that working together in a python project often means that you need to discuss the tooling first.
+However, sane people are convinced when I explain that `uv` is 10-100x faster than their beloved
+`pip`.
 
-This means that working together in a python project often means that you need to discuss the tooling first.
+In my opinion, `uv` is the absolute winner:
 
-In my opinion, `rye` is the absolute winner:
-
+- previous, `rye` and `uv` where separate projects. However, `uv` and `rye` have merged their projects. This means that `uv` does everything `rye` did.
 - the quality of the project is really high
-- there is just one tool; you dont need both pyenv to manage your python version, pdm to manage dependencies and setuptools to build your package. `rye` is you one-stop shop.
+- there is just one tool; you dont need both pyenv to manage your python version, pdm to manage dependencies and setuptools to build your package. `uv` is you one-stop shop.
 - If you are the kind of person that picks the longest line in the supermarket, suit yourself, but I have better things to do than waiting for my tools the fix the dependency tree. If you dont consider a 10-100x speedup as a relevant variable in picking your toolbox, I doubt your rational decision making capabilities...
 
 ## 1.1 Key Components
@@ -221,7 +221,7 @@ Command name      Module   File  Function
 To use it, first, install your package:
 
 - using pip: `pip install -e .`
-- using rye: `rye sync`
+- using uv: `uv sync`
 
 this will add your module to your .venv.
 Now you can run your code by just typing in the terminal:
@@ -280,17 +280,19 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-I will use this if I want to minimize dependencies and adding rye isnt strictly necessary.
+I will use this if I want to minimize dependencies and adding uv isnt strictly necessary.
 And example would be, inside a Docker container.
-However, sometimes I do use rye inside a container, because I really want the speedup that rye (which uses uv) gives me; it's about [10-100x faster then pip](https://docs.astral.sh/uv/)...
+However, sometimes I do use uv inside a container, because I really want the speedup that uv gives me; it's about [10-100x faster then pip](https://docs.astral.sh/uv/)...
 
-Instead of using base python, we can use rye:
+Instead of using base python, we can use uv:
 
 ```bash
-rye init myproject # creates folder structure plus pyproject.toml file
+uv init myproject # creates folder structure plus pyproject.toml file
 cd myproject
-rye sync  # syncs pyproject.toml file with .venv , activates .venv
+uv add numpy # adds numpy as a dependency and creates the .venv
 ```
+
+If you already have a `pyproject.toml` file, or want to recreate your .venv, use `uv sync`
 
 ## 4.2 Project Examples
 
@@ -361,7 +363,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 ```
 
-defines your backend. `rye` uses `hatch` by default; other options are setuptools and pdm.
+defines your backend. `uv` uses `hatch` by default; other options are setuptools and pdm.
 
 [Hatch](https://github.com/pypa/hatch) is not part of base Python - it's a modern build tool that:
 
@@ -386,7 +388,7 @@ packages = ["src/mymodule"]
 
 when building a module. You can do this with native but slow `pip` like this:
 `pip install -e .`
-or, when you use the faster `rye`, with `rye sync`.
+or, when you use the faster `uv`, with `uv sync`.
 
 This command will install your module into your active .venv and after this is succesful you should be able to:
 
@@ -404,13 +406,13 @@ Note how you can remove the src from your import.
 
 ## 5.3 bulding your project
 
-Using `pip install` or `rye sync` puts your code in your python environment, just like other packages you `pip install` or `rye add`.
+Using `pip install` or `uv sync` puts your code in your python environment, just like other packages you `pip install` or `uv add`.
 This makes your own code importable. However, you can go one step further and actually build a package.
-The easiest way to do this is, is with rye.
+The easiest way to do this is, is with uv.
 
 ```bash
-rye build # build a wheel and a zip of your code
-rye build --wheel # builds just the wheel
+uv build # build a wheel and a zip of your code
+uv build --wheel # builds just the wheel
 ```
 
 which will result in this:
@@ -467,9 +469,9 @@ One-time Setup
 Now you can first `build` and then publish your wheel with:
 
 ```bash
-rye publish --token $YOUR_TOKEN 
+uv publish --token $YOUR_TOKEN 
 ```
 
 Note that this makes your code available to everyone with an internet connection!
 
-[← Previous: Add A Readme](add_a_readme.md) | [Next: Encapsulation →](encapsulation.md)
+[← Previous: Typehinting](typehinting.md) | [Next: Open Closed →](open_closed.md)
