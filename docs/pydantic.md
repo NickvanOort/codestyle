@@ -36,7 +36,7 @@ class SearchSpace:
     data_dir: Path
 ```
 
-This will create a class with the parameters you need. In addition, it adds typehints, which can be checked by your linter (eg myy or pyright). However, it does not provide automatic checks on the parameters at creation time. You could still create `Searchspace.input_size = "hi"` and python won't complain. While it is better than the dict, because it gives you more control over the items inside the object, you can have stricter checks by using pydantic:
+This will create a class with the parameters you need. In addition, it adds typehints, which can be checked by your linter (eg mypy or pyright). However, it does not provide automatic checks on the parameters at creation time. You could still create `Searchspace.input_size = "hi"` and python won't complain. While it is better than the dict, because it gives you more control over the items inside the object, you can have stricter checks by using pydantic:
 
 Pydantic helps with a lot of things. First of all, it will help you to define the types of your parameters. This will help you to catch bugs early on!
 At the moment the wrong type is passed, pydantic will first try to convert it to the correct type. If this fails, it will raise an error.
