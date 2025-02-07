@@ -284,7 +284,7 @@ source .venv/bin/activate
 
 I will use this if I want to minimize dependencies and adding uv isnt strictly necessary.
 And example would be, inside a Docker container.
-However, sometimes I do use uv inside a container, because I really want the speedup that uv gives me; it's about [10-100x faster then pip](https://docs.astral.sh/uv/)...
+However, sometimes I do use uv inside a container, because I really want the speedup that uv gives me; it's about [10-100x faster than pip](https://docs.astral.sh/uv/)...
 
 Instead of using base python, we can use uv:
 
@@ -349,7 +349,7 @@ project/
 
 This mainly adds additional directories for tests and utils. The tests directory is used to
 automatically run tests using a test runner like pytest. The utils directory is used to
-organize your code into smaller submmodules, and you can import it like this:
+organize your code into smaller submodules, and you can import it like this:
 `from src.mymodule.utils import helper_function` or, if you have installed your module in your env,
 `from mymodule.utils import helper_function`.
 
