@@ -144,10 +144,10 @@ if __name__ == '__main__':
     main()
 ```
 
-When Python runs a file, it sets special variables. One of them is __name__:
+When Python runs a file, it sets special variables. One of them is \_\_name__:
 
-- When you run the file directly (see section 3): __name__ = '__main__'
-- When you import the file: __name__ = the module's name
+- When you run the file directly (see section 3): \_\_name__ = \_\_main__
+- When you import the file: \_\_name__ = the module's name
 
 Having a section like `if __name__ == "__main___"` gives you control over what parts of the code to run, when.
 You might want to test parts of the code by running a script directly. But you dont want to run
