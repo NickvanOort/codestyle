@@ -159,13 +159,13 @@ Eg you might want to test parts of the code by running a script directly. But yo
 
 ```python
 # Absolute import (preferred over relative)
-from src.mymodule.utils import helper_function
+from mymodule.utils import helper_function
 
 # Relative import (from same directory)
 from .utils import helper_function
 
 # Import specific functions (always preferred over 'import *')
-from src.mymodule.constants import (
+from mymodule.constants import (
     DEFAULT_TIMEOUT,
     MAX_RETRIES,
 )
@@ -176,13 +176,13 @@ from src.mymodule.constants import (
 Beginning users often encounter import errors:
 
 ```bash
-Error: ModuleNotFoundError: No module named 'src'
+Error: ModuleNotFoundError: No module named 'mymodule'
 ```
 
 Common causes:
 
 - Running from wrong directory
-- Missing __init__.py files
+- Missing `__init__.py` files
 - Module not installed or not in Python path
 - venv not activated
 
@@ -191,8 +191,36 @@ Solutions:
 ```bash
 cd /path/to/myproject # Always run from project root
 source .venv/bin/activate # make sure your .venv is activated
-python -m src.mymodule.main # only if you havent built the package; see section `building your project`
+python -m mymodule.main # only if you havent built the package; see section `building your project`
 ```
+
+## 2.3 Importing in your notebooks or scripts
+
+Lets assume you have sucessfully added scripts inside your module.
+But now you want to import your helperfunction within your notebook or script.
+```
+myproject/            # Project root
+|- .venv/             # Virtual environment directory
+|- dev/                
+|  |- notebook.ipynb    # Your notebook
+|  |- script.py         # your python script
+|- src/               # Source code directory
+|  |- mymodule/       # Your actual module
+|  |  |- __init__.py  # Makes the directory a Python package
+|  |  |- main.py      # Main application code
+|  |  |- utils.py     # Additional modules
+```
+Lets assume your setup looks something like this and you want to import a function from utils.py into your notebook.ipynb.
+If you use uv, and if you have setup your `pyproject.toml` file correctly, if you run `uv sync` it will install a reference
+to your `src/mymodule` into your `.venv`.
+This means that, if you select the correct `.venv`, you should be able to simply do `from mymodule.utils import myfunction`
+
+Common issues:
+- you didnt select the `.venv`. In the top right of your notebook, click `select kernel` and select your `.venv`. Sometimes you need to select `python environments`. If your `.venv` doestn show up in the list (it should look like `.venv/bin/python`) you need to reload vscode (cmd+shift+P then search 'reload window').
+- you didnt set up your `pyproject.toml` file correct. Doublecheck with this manual. Everything matters; a wrong `name = "mymodule"` can already mess things up.
+- 
+
+
 
 # 3. running your code
 
@@ -262,6 +290,12 @@ The -m flag treats the path as a module path, not a file path.
 ```bash
 # From project root
 python -m src.mymodule.main
+```
+
+or, if you have uv synced and activated your venv:
+```bash
+# From project root
+python -m mymodule.main
 ```
 
 # 4. Environment Setup
