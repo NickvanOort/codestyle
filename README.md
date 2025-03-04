@@ -30,6 +30,7 @@ The topics cover different subjects; some are more a preference for one library 
 | [organize your folders](docs/cookiecutter.md) | 💡 | 🏅 | 🏅 | 🏅 |
 | [Add a README](docs/add_a_readme.md) | 💡 | 🏅 | 🏅 | 🏅 |
 | [isolate your settings](docs/pydantic.md) | 💡 | 💡 | 🏅 | 🏅 |
+| [classes and inheritance](docs/use_classes_and_inheritance.md) | 💡 | 💡 | 🏅 | 🏅 |
 | [Git](docs/git_basics.md) | 💡 | 💡 | 🏅 | 🏅 |
 | [Use formatters and linting](docs/linting.md) | 🐌 | 💡 | 🏅 | 🏅 |
 | [use logging](docs/loguru.md) | 🐌 | 💡 | 🏅 | 🏅 |

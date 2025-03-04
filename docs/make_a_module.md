@@ -198,6 +198,7 @@ python -m mymodule.main # only if you havent built the package; see section `bui
 
 Lets assume you have sucessfully added scripts inside your module.
 But now you want to import your helperfunction within your notebook or script.
+
 ```
 myproject/            # Project root
 |- .venv/             # Virtual environment directory
@@ -210,17 +211,17 @@ myproject/            # Project root
 |  |  |- main.py      # Main application code
 |  |  |- utils.py     # Additional modules
 ```
+
 Lets assume your setup looks something like this and you want to import a function from utils.py into your notebook.ipynb.
 If you use uv, and if you have setup your `pyproject.toml` file correctly, if you run `uv sync` it will install a reference
 to your `src/mymodule` into your `.venv`.
 This means that, if you select the correct `.venv`, you should be able to simply do `from mymodule.utils import myfunction`
 
 Common issues:
+
 - you didnt select the `.venv`. In the top right of your notebook, click `select kernel` and select your `.venv`. Sometimes you need to select `python environments`. If your `.venv` doestn show up in the list (it should look like `.venv/bin/python`) you need to reload vscode (cmd+shift+P then search 'reload window').
 - you didnt set up your `pyproject.toml` file correct. Doublecheck with this manual. Everything matters; a wrong `name = "mymodule"` can already mess things up.
-- 
-
-
+-
 
 # 3. running your code
 
@@ -293,6 +294,7 @@ python -m src.mymodule.main
 ```
 
 or, if you have uv synced and activated your venv:
+
 ```bash
 # From project root
 python -m mymodule.main

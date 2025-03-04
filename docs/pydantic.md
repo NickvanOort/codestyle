@@ -1,4 +1,4 @@
-[← Previous: Add A Readme](add_a_readme.md) | [Next: Git Basics →](git_basics.md)
+[← Previous: Add A Readme](add_a_readme.md) | [Next: Use Classes And Inheritance →](use_classes_and_inheritance.md)
 
 # Table of Contents
 
@@ -120,4 +120,4 @@ print(settings1.mutable_attr)  # prints ["Hello"]
 print(settings2.mutable_attr)  # print []
 ```
 
-[← Previous: Add A Readme](add_a_readme.md) | [Next: Git Basics →](git_basics.md)
+[← Previous: Add A Readme](add_a_readme.md) | [Next: Use Classes And Inheritance →](use_classes_and_inheritance.md)
