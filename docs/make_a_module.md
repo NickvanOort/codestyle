@@ -1,4 +1,4 @@
-[← Previous: Typehinting](typehinting.md) | [Next: Open Closed →](open_closed.md)
+[← Previous: Typehinting](typehinting.md) | [Next: Encapsulation →](encapsulation.md)
 
 # Table of Contents
 
@@ -511,4 +511,4 @@ uv publish --token $YOUR_TOKEN
 
 Note that this makes your code available to everyone with an internet connection!
 
-[← Previous: Typehinting](typehinting.md) | [Next: Open Closed →](open_closed.md)
+[← Previous: Typehinting](typehinting.md) | [Next: Encapsulation →](encapsulation.md)

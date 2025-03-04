@@ -1,3 +1,54 @@
+[← Previous: Encapsulation](encapsulation.md) | [Next: Open Closed →](open_closed.md)
+
+# Table of Contents
+
+- [Testing in Software Development](#Testing-in-Software-Development)
+  - [Motivation for Testing](#Motivation-for-Testing)
+  - [Types of Tests](#Types-of-Tests)
+    - [Unit Tests](#Unit-Tests)
+    - [Integration Tests](#Integration-Tests)
+    - [Other Types](#Other-Types)
+  - [Moving Beyond Jupyter Notebooks for Testing](#Moving-Beyond-Jupyter-Notebooks-for-Testing)
+    - [Limitations of Testing in Notebooks](#Limitations-of-Testing-in-Notebooks)
+    - [Benefits of Using pytest](#Benefits-of-Using-pytest)
+  - [Example: Testing a CSV Handler](#Example:-Testing-a-CSV-Handler)
+    - [Testing in a Notebook (Limited Approach)](<#Testing-in-a-Notebook-(Limited-Approach)>)
+    - [Testing with pytest (Better Approach)](<#Testing-with-pytest-(Better-Approach)>)
+  - [Pytest Basics](#Pytest-Basics)
+    - [Setting Up a Tests Folder](#Setting-Up-a-Tests-Folder)
+  - [Testing Folder Structure and Naming Conventions](#Testing-Folder-Structure-and-Naming-Conventions)
+    - [Naming Conventions for pytest](#Naming-Conventions-for-pytest)
+  - [Fixtures in pytest](#Fixtures-in-pytest)
+    - [What are Fixtures?](#What-are-Fixtures?)
+    - [How to Use Fixtures](#How-to-Use-Fixtures)
+    - [Fixture Scope](#Fixture-Scope)
+    - [Cleanup with Fixtures](#Cleanup-with-Fixtures)
+    - [Built-in Fixtures](#Built-in-Fixtures)
+    - [Writing Tests for the CSV Handler](#Writing-Tests-for-the-CSV-Handler)
+    - [Using Temporary Files and Directories](#Using-Temporary-Files-and-Directories)
+  - [Using Mock Objects and Monkeypatching](#Using-Mock-Objects-and-Monkeypatching)
+    - [Monkeypatching with pytest](#Monkeypatching-with-pytest)
+    - [Using the unittest.mock Library](#Using-the-unittest.mock-Library)
+    - [Example: Testing Error Handling with Mocks](#Example:-Testing-Error-Handling-with-Mocks)
+    - [Example: Mocking Network Requests](#Example:-Mocking-Network-Requests)
+    - [Benefits of Mocking](#Benefits-of-Mocking)
+  - [Testing Edge Cases](#Testing-Edge-Cases)
+    - [Examples of Edge Cases for the CSV Handler:](#Examples-of-Edge-Cases-for-the-CSV-Handler:)
+  - [Using pytest-cov for Coverage Analysis](#Using-pytest-cov-for-Coverage-Analysis)
+    - [Installation](#Installation)
+    - [Basic Usage](#Basic-Usage)
+    - [Configuration in pyproject.toml](#Configuration-in-pyproject.toml)
+    - [Understanding Coverage Reports](#Understanding-Coverage-Reports)
+    - [Interpreting Coverage Results](#Interpreting-Coverage-Results)
+  - [Property-Based Testing with Hypothesis](#Property-Based-Testing-with-Hypothesis)
+    - [Installation](#Installation)
+    - [Why Hypothesis is Valuable for Data Science](#Why-Hypothesis-is-Valuable-for-Data-Science)
+    - [Example: Testing a Simple Calculator](#Example:-Testing-a-Simple-Calculator)
+    - [Understanding the Power of Hypothesis](#Understanding-the-Power-of-Hypothesis)
+    - [Finding Floating-Point Issues](#Finding-Floating-Point-Issues)
+    - [Adding Tolerance for Floating-Point Comparisons](#Adding-Tolerance-for-Floating-Point-Comparisons)
+  - [Conclusion](#Conclusion)
+
 # Testing in Software Development
 
 ## Motivation for Testing
@@ -5,32 +56,37 @@
 Testing is a critical aspect of software development that ensures your code works as expected. It provides several key benefits:
 
 1. **Bug Detection**: Tests help identify bugs early in the development cycle when they are less costly to fix.
-2. **Code Quality**: Well-tested code tends to be better designed as it forces you to think about your code's structure and interactions.
-3. **Refactoring Confidence**: Tests provide a safety net that allows you to refactor or enhance your code with confidence.
-4. **Documentation**: Tests serve as living documentation, demonstrating how your code should be used.
-5. **Time Savings**: While writing tests requires an initial time investment, it saves significant time in the long run by preventing bugs and simplifying debugging.
+1. **Code Quality**: Well-tested code tends to be better designed as it forces you to think about your code's structure and interactions.
+1. **Refactoring Confidence**: Tests provide a safety net that allows you to refactor or enhance your code with confidence.
+1. **Documentation**: Tests serve as living documentation, demonstrating how your code should be used.
+1. **Time Savings**: While writing tests requires an initial time investment, it saves significant time in the long run by preventing bugs and simplifying debugging.
 
 ## Types of Tests
 
 ### Unit Tests
+
 Unit tests focus on testing individual components or functions in isolation. They verify that each part of your code works correctly on its own.
 
 **Characteristics**:
+
 - Fast execution
 - Test small, isolated pieces of code
 - Mock dependencies to ensure isolation
 - Should be numerous and cover many edge cases
 
 ### Integration Tests
+
 Integration tests verify that different components work together correctly. They test the interactions between units or modules.
 
 **Characteristics**:
+
 - Test interactions between components
 - Often involve real dependencies (databases, file systems, etc.)
 - Slower than unit tests
 - Detect issues that unit tests might miss
 
 ### Other Types
+
 - **Functional Tests**: Test entire features from a user's perspective
 - **End-to-End Tests**: Test the entire application flow
 - **Performance Tests**: Evaluate system performance under various conditions
@@ -41,6 +97,7 @@ Integration tests verify that different components work together correctly. They
 While Jupyter notebooks are excellent for exploratory data analysis and prototyping, they have limitations for systematic testing:
 
 ### Limitations of Testing in Notebooks
+
 - Tests are often manual and not easily repeatable
 - Difficult to automate
 - Cell execution order can lead to hidden dependencies
@@ -48,6 +105,7 @@ While Jupyter notebooks are excellent for exploratory data analysis and prototyp
 - State can persist between executions, obscuring issues
 
 ### Benefits of Using pytest
+
 - Automated test execution
 - Consistent environment for each test
 - Easy to run all tests with a single command
@@ -143,19 +201,23 @@ my_project/
 pytest relies on naming conventions to automatically discover and run tests:
 
 #### Test Files
+
 - Test files must start with `test_` or end with `_test.py`
 - Examples: `test_csv_handler.py` or `csv_handler_test.py`
 
 #### Test Functions
+
 - Test functions must start with `test_`
 - Example: `test_save_and_load()`, `test_empty_dataframe()`
 
 #### Test Classes
+
 - Test classes must start with `Test`
 - Must not have an `__init__` method
 - Example: `TestCSVHandler`
 
 #### Test Methods in Classes
+
 - Test methods in classes must start with `test_`
 - Example: `def test_save_functionality(self):`
 
@@ -172,6 +234,7 @@ class TestCSVHandler:
 ```
 
 #### Fixture Functions
+
 - Fixture functions typically have descriptive names without a special prefix
 - Example: `sample_data()`, `db_connection()`
 
@@ -184,6 +247,7 @@ Fixtures in pytest provide a way to set up preconditions for tests and share res
 ### What are Fixtures?
 
 Fixtures are functions decorated with `@pytest.fixture` that:
+
 - Create and return test data or resources (like database connections, test objects, etc.)
 - Can perform setup before tests run and cleanup after tests complete
 - Can be easily shared across multiple test functions
@@ -191,6 +255,7 @@ Fixtures are functions decorated with `@pytest.fixture` that:
 ### How to Use Fixtures
 
 1. **Define a fixture**:
+
 ```python
 @pytest.fixture
 def sample_data():
@@ -199,6 +264,7 @@ def sample_data():
 ```
 
 2. **Use the fixture in test functions** by adding it as a parameter:
+
 ```python
 def test_save_and_load(tmp_path, sample_data):
     # The sample_data fixture is automatically passed to this test
@@ -242,7 +308,6 @@ def test_with_tempdir(tmp_path):
     filepath = tmp_path / "data.csv"
     # The directory and file will be automatically removed after the test
 ```
-
 
 ### Writing Tests for the CSV Handler
 
@@ -334,6 +399,88 @@ def test_multiple_files(tmp_path, sample_data):
     loaded2 = handler.load(str(file2))
     assert modified_data.equals(loaded2)
 ```
+
+## Using conftest.py for Shared Fixtures
+
+The `conftest.py` file is a special file in pytest that allows you to define fixtures that are accessible across multiple test files without importing them.
+
+### Project Structure with conftest.py
+
+```
+my_project/
+├── csv_handler/
+│   ├── __init__.py
+│   └── csv_handler.py
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py          # Shared fixtures for all tests
+│   ├── test_csv_handler.py
+│   └── advanced/
+│       ├── conftest.py      # Additional fixtures for advanced tests
+│       └── test_features.py
+└── pyproject.toml
+```
+
+The `conftest.py` file can be placed at different levels in the directory structure. Fixtures in a parent directory's `conftest.py` are available to all tests in that directory and its subdirectories.
+
+### Creating a conftest.py File
+
+Place this file in your tests directory or any parent directory:
+
+```python
+# tests/conftest.py
+import pytest
+import pandas as pd
+import os
+
+@pytest.fixture(scope="session")
+def sample_data():
+    """Provide sample DataFrame for all tests."""
+    return pd.DataFrame({'A': [1, 2, 3], 'B': ['a', 'b', 'c']})
+
+@pytest.fixture(scope="function")
+def csv_handler():
+    """Provide a fresh CSVHandler instance for each test."""
+    from csv_handler import CSVHandler
+    return CSVHandler()
+
+@pytest.fixture(scope="session")
+def test_config():
+    """Provide test configuration for all tests."""
+    return {
+        "max_rows": 1000,
+        "default_encoding": "utf-8",
+        "allowed_extensions": [".csv", ".tsv"]
+    }
+```
+
+### Using conftest Fixtures
+
+These fixtures are automatically discovered by pytest and can be used in any test file:
+
+```python
+# tests/test_csv_handler.py
+def test_save_functionality(tmp_path, csv_handler, sample_data):
+    # Use fixtures from conftest.py without imports
+    filepath = tmp_path / "test.csv"
+    csv_handler.save(sample_data, str(filepath))
+    assert os.path.exists(filepath)
+
+# tests/test_advanced_features.py
+def test_encoding_handling(csv_handler, test_config):
+    # Use the same fixtures in different test files
+    assert csv_handler.default_encoding == test_config["default_encoding"]
+```
+
+so you only need to add `sample_data` as an argument, an pytest will handle that the proper function or object is provided.
+
+### Benefits of conftest.py
+
+1. **Reduced Duplication**: Define fixtures once, use them everywhere
+1. **Automatic Discovery**: No imports needed in test files
+1. **Hierarchical Structure**: Can have multiple conftest.py files in different directories
+1. **Test Organization**: Keep test setup code separate from test logic
+
 ## Using Mock Objects and Monkeypatching
 
 When testing code that interacts with external systems (like files, databases, or APIs), it's often beneficial to replace these interactions with mock objects. This allows you to test your code without depending on external resources and simulate various scenarios.
@@ -447,9 +594,9 @@ def test_load_from_url(mock_get):
 ### Benefits of Mocking
 
 1. **Faster tests**: No waiting for file I/O or network calls
-2. **More reliable tests**: Not affected by external factors 
-3. **Complete test coverage**: Test error conditions difficult to reproduce in real environments
-4. **Isolated tests**: Test your code, not dependencies
+1. **More reliable tests**: Not affected by external factors
+1. **Complete test coverage**: Test error conditions difficult to reproduce in real environments
+1. **Isolated tests**: Test your code, not dependencies
 
 ## Testing Edge Cases
 
@@ -538,6 +685,7 @@ exclude_lines = [
 ### Understanding Coverage Reports
 
 Coverage reports provide metrics on:
+
 - **Statement coverage**: Percentage of statements executed
 - **Branch coverage**: Percentage of conditional branches executed
 - **Function coverage**: Percentage of functions called
@@ -572,9 +720,9 @@ uv install hypothesis
 ### Why Hypothesis is Valuable for Data Science
 
 1. **Automated Edge Case Discovery**: Hypothesis finds edge cases you might not think of
-2. **Exhaustive Testing**: Tests a wider range of inputs than you would manually write
-3. **Reproducibility**: Failed tests can be reproduced exactly
-4. **Shrinking**: When a test fails, Hypothesis finds the simplest example that still fails
+1. **Exhaustive Testing**: Tests a wider range of inputs than you would manually write
+1. **Reproducibility**: Failed tests can be reproduced exactly
+1. **Shrinking**: When a test fails, Hypothesis finds the simplest example that still fails
 
 ### Example: Testing a Simple Calculator
 
@@ -597,11 +745,13 @@ class Calculator:
             raise ValueError("Cannot divide by zero")
         return a / b
 ```
+
 ### Understanding the Power of Hypothesis
 
 Let's consider a simple property of addition: commutativity. This means that you expect that the order of addition doesnt matter, so a+b=b+a should alway be true, for every number.
 
 **Traditional Testing Approach:**
+
 ```python
 def test_addition_commutative_traditional():
     calc = Calculator()
@@ -616,7 +766,6 @@ This works, but it only tests three specific cases. What about decimals? Large n
 **Property-Based Testing with Hypothesis:**
 
 Instead of choosing specific examples, we can define the *property* we want to test and let Hypothesis generate hundreds of test cases automatically:
-
 
 ### Finding Floating-Point Issues
 
@@ -662,21 +811,24 @@ def test_add_commutative_with_epsilon(a, b):
 ```
 
 This approach:
+
 1. Explicitly sets bounds on the input values to avoid overflow
-2. Uses a relative tolerance for large numbers
-3. Uses an absolute tolerance for smaller numbers
-4. Provides a helpful error message showing the actual difference
+1. Uses a relative tolerance for large numbers
+1. Uses an absolute tolerance for smaller numbers
+1. Provides a helpful error message showing the actual difference
 
 ## Conclusion
 
 Testing is a crucial aspect of software development, especially in data science where results need to be reliable. By leveraging tools like pytest, pytest-cov, and Hypothesis, you can:
 
 1. Automate testing to catch bugs early
-2. Ensure code works correctly across a range of inputs
-3. Confidently refactor and improve your code
-4. Document expected behavior
-5. Find edge cases you might not have considered
+1. Ensure code works correctly across a range of inputs
+1. Confidently refactor and improve your code
+1. Document expected behavior
+1. Find edge cases you might not have considered
 
 Remember that testing is an investment that pays off by saving debugging time and increasing confidence in your code's correctness.
 
 You can find more on testing in the [MADS-deployment](https://github.com/raoulg/MADS-deployment) course, specifically lesson `3-testing`. Over there, you can check out the presentation (in the folder `presentations` and find some working code (eg tests for the calculator example) and some exercises.
+
+[← Previous: Encapsulation](encapsulation.md) | [Next: Open Closed →](open_closed.md)

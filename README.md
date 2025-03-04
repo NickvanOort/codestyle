@@ -36,8 +36,8 @@ The topics cover different subjects; some are more a preference for one library 
 | [use logging](docs/loguru.md) | 🐌 | 💡 | 🏅 | 🏅 |
 | [Use typehinting](docs/typehinting.md) | 🐌 | 💡 | 🏅 | 🏅 |
 | [Make a proper module](docs/make_a_module.md) | 🐌 | 💡 | 🏅 | 🏅 |
-| [Encapsulation, SRP](docs/encapsulation.md) | 🐌 | 💡 | 🏅  | 🏅 |
-| [testing](docs/testing.md) | 🐌 | 💡  | 🏅  | 🏅 |
+| [Encapsulation, SRP](docs/encapsulation.md) | 🐌 | 💡 | 🏅 | 🏅 |
+| [testing](docs/testing.md) | 🐌 | 💡 | 🏅 | 🏅 |
 | [Open-Closed Principle](docs/open_closed.md) | 🐌 | 💡 | 💡 | 🏅 |
 | Makefiles or shell scripts | 🐌 | 💡 | 💡 | 🏅 |
 | [Abstract classes (ABC, Protocol)](docs/typehinting.md) | 🐌 | 🐌 | 💡 | 🏅 |

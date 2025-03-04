@@ -1,4 +1,4 @@
-[← Previous: Open Closed](open_closed.md)
+[← Previous: Make A Module](make_a_module.md) | [Next: Testing →](testing.md)
 
 # Table of Contents
 
@@ -228,4 +228,4 @@ class FileHandler:
         df.to_parquet(self.file_path, index=False)
 ```
 
-[← Previous: Open Closed](open_closed.md)
+[← Previous: Make A Module](make_a_module.md) | [Next: Testing →](testing.md)
