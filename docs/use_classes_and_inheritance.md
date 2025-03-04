@@ -207,4 +207,8 @@ simba.pet()
 # Output: miauw
 ```
 
+This was the introduction into classes and inheritance.
+While this is a very useful principle, beginners often have problems organising their classes; they end up stacking everything in a class, which makes it much harder to maintain.
+That's why the recommended reading is also the entry about [SRP (Single Responsibility Principle) and Encapsulation](encapsulation.md)
+
 [← Previous: Pydantic](pydantic.md) | [Next: Git Basics →](git_basics.md)
