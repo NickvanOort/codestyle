@@ -75,7 +75,7 @@ class LoyaltyAnalyzer:
         return fig
 ```
 
-While it is nice that there is a class (see [use classes](use_classes_and_inheritance.md) and that there is a config that specifies the file, this is code that can only be used once.
+While it is nice that there is a class (see [use classes](use_classes_and_inheritance.md) and that there is a config that specifies the file (see [isolate your settings](pydantic.md)), this is code that can only be used once.
 The code is very specific, only for THIS usecase, and it is nearly impossible to use the code for anything else than this specific plot. For the next plot, the developper will probably need to write a completely new class. And if he doesnt change his style of writing code, he will keep on creating classes for EVERY new plot.
 
 In addition to that, for every detail he wants to change (eg even a change in title) the developper will need to dive into the code, and change it again.
