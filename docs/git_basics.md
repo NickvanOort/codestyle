@@ -1,4 +1,4 @@
-[← Previous: Use Classes And Inheritance](use_classes_and_inheritance.md) | [Next: Linting →](linting.md)
+[← Previous: Abstract Code](abstract_code.md) | [Next: Linting →](linting.md)
 
 # Table of Contents
 
@@ -45,4 +45,4 @@ From the tutorials above, you got a taste of how a git workflow looks like. Ther
 
 If you are interested in learning more about the more complex GitFlow, you can check out this [very short video on its structure](https://www.youtube.com/watch?v=1SXpE08hvGs&ab_channel=TraversyMedia). For a simple and accessible comparison of different implementations of GitFlow, check out [this short video](https://www.youtube.com/watch?v=7lgGEXpsflI).
 
-[← Previous: Use Classes And Inheritance](use_classes_and_inheritance.md) | [Next: Linting →](linting.md)
+[← Previous: Abstract Code](abstract_code.md) | [Next: Linting →](linting.md)

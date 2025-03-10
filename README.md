@@ -31,6 +31,7 @@ The topics cover different subjects; some are more a preference for one library 
 | [Add a README](docs/add_a_readme.md) | 💡 | 🏅 | 🏅 | 🏅 |
 | [isolate your settings](docs/pydantic.md) | 💡 | 💡 | 🏅 | 🏅 |
 | [classes and inheritance](docs/use_classes_and_inheritance.md) | 💡 | 💡 | 🏅 | 🏅 |
+| [make your code abstract enough](docs/abstract_code.md) | 💡 | 💡 | 🏅 | 🏅 |
 | [Git](docs/git_basics.md) | 💡 | 💡 | 🏅 | 🏅 |
 | [Use formatters and linting](docs/linting.md) | 🐌 | 💡 | 🏅 | 🏅 |
 | [use logging](docs/loguru.md) | 🐌 | 💡 | 🏅 | 🏅 |
