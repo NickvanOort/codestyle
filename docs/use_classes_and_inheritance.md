@@ -1,7 +1,5 @@
 [← Previous: Pydantic](pydantic.md) | [Next: Abstract Code →](abstract_code.md)
 
-[← Previous: Pydantic](pydantic.md) | [Next: Git Basics →](git_basics.md)
-
 # Table of Contents
 
 - [Classes and inheritance](#Classes-and-inheritance)
