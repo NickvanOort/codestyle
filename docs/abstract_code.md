@@ -16,7 +16,7 @@
   - [The Power of Abstraction](#The-Power-of-Abstraction)
   - [Conclusion](#Conclusion)
 
-# Refactoring Guide: Eliminating Hardcoding
+# Refactoring Guide: Make your code more abstract
 
 ## The Problem: Hardcoded Values without abstraction
 
