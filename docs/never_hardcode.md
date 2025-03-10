@@ -24,6 +24,7 @@ df['jaar'] = df['timestamp'].dt.year
 print(df.columns)
 print(df['jaar'].head())
 ```
+As a rule of thumb, everying that is a string here, is hardcoded...
 
 So, yes, this will work. It won't crash. However, what if you ever change the structure of your folders? Your datafile will not be found. What if the `timestamp` column changes name? Are you going to look through all your code to find all the places where you used that column? I hope not...
 
