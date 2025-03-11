@@ -80,4 +80,6 @@ In contrast to the previous code, the refactored code will:
 - the 'jaar' is hardcoded; you could consider to centralize this as well, but in some situations you might leave it like it is, for example you know for sure this is only going to be used one time, in this function. This depends on context, and you might still need to decide to centalize this later on.
 - you have split the code into different functions, and settings. This makes your code more robust against changes in your data etc.
 
+If you whish to look at a complete repository that isn't hardcoded you could look at this repository: [github.com/sche34/click_example](https://github.com/sche34/click_example). The repository is an example of a pipeline that creates one or two visuals, similar to the assignments in (MADS)-DAV but with dummy data. It has a central configuration file (config.toml) with sections for every visual that allows you to change the (axis) title and turn certain settings on or off. In addition, it uses an abstract class that avoids the use of duplicate code and a standardized structure of the class.
+
 [Next: Pathlib →](pathlib.md)
